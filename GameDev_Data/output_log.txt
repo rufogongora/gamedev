@@ -1,0 +1,106 @@
+Initialize engine version: 5.0.0f4 (5b98b70ebeb9)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: NVIDIA GeForce GTX 765M (ID=0x11e2)
+    Vendor:   NVIDIA
+    VRAM:     1985 MB
+Begin MonoManager ReloadAssembly
+Platform assembly: C:\Users\Rodolfo\Documents\Unity\TowerDefense_Leap\GameDev_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\Rodolfo\Documents\Unity\TowerDefense_Leap\GameDev_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\Rodolfo\Documents\Unity\TowerDefense_Leap\GameDev_Data\Managed\Assembly-CSharp-firstpass.dll (this message is harmless)
+Loading C:\Users\Rodolfo\Documents\Unity\TowerDefense_Leap\GameDev_Data\Managed\Assembly-CSharp-firstpass.dll into Unity Child Domain
+Platform assembly: C:\Users\Rodolfo\Documents\Unity\TowerDefense_Leap\GameDev_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\Rodolfo\Documents\Unity\TowerDefense_Leap\GameDev_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Users\Rodolfo\Documents\Unity\TowerDefense_Leap\GameDev_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Users\Rodolfo\Documents\Unity\TowerDefense_Leap\GameDev_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: C:\Users\Rodolfo\Documents\Unity\TowerDefense_Leap\GameDev_Data\Managed\LeapCSharp.NET3.5.dll (this message is harmless)
+Loading C:\Users\Rodolfo\Documents\Unity\TowerDefense_Leap\GameDev_Data\Managed\LeapCSharp.NET3.5.dll into Unity Child Domain
+- Completed reload, in  0.064 seconds
+<RI> Initializing input.
+<RI> Input initialized.
+desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
+<RI> Initialized touch support.
+Platform assembly: C:\Users\Rodolfo\Documents\Unity\TowerDefense_Leap\GameDev_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: C:\Users\Rodolfo\Documents\Unity\TowerDefense_Leap\GameDev_Data\Managed\System.dll (this message is harmless)
+Setting up 2 worker threads for Enlighten.
+  Thread -> id: 57b0 -> priority: 1 
+  Thread -> id: 5918 -> priority: 1 
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 4.329556 ms
+Setting up 2 worker threads for Enlighten.
+  Thread -> id: 5b94 -> priority: 1 
+  Thread -> id: 5950 -> priority: 1 
+
+Unloading 27 unused Assets to reduce memory usage. Loaded Objects now: 1320.
+Total: 0.480253 ms (FindLiveObjects: 0.061154 ms CreateObjectMapping: 0.040627 ms MarkObjects: 0.331003 ms  DeleteObjects: 0.047041 ms)
+
+masizo
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+masizo
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+harder!
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+harder!
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+masizo
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+harder!
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+masizo
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+harder!
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+masizo
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+harder!
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+masizo
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+harder!
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+masizo
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+masizo
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+harder!
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 2.636051 ms
+
+Unloading 252 unused Assets to reduce memory usage. Loaded Objects now: 697.
+Total: 0.585028 ms (FindLiveObjects: 0.055594 ms CreateObjectMapping: 0.039771 ms MarkObjects: 0.214254 ms  DeleteObjects: 0.273697 ms)
+
+Setting up 2 worker threads for Enlighten.
+  Thread -> id: 5968 -> priority: 1 
+  Thread -> id: 5be0 -> priority: 1 

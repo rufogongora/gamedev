@@ -16,24 +16,100 @@ Platform assembly: C:\Users\Rodolfo\Documents\Unity\TowerDefense_Leap\GameDev_Da
 Loading C:\Users\Rodolfo\Documents\Unity\TowerDefense_Leap\GameDev_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
 Platform assembly: C:\Users\Rodolfo\Documents\Unity\TowerDefense_Leap\GameDev_Data\Managed\LeapCSharp.NET3.5.dll (this message is harmless)
 Loading C:\Users\Rodolfo\Documents\Unity\TowerDefense_Leap\GameDev_Data\Managed\LeapCSharp.NET3.5.dll into Unity Child Domain
-- Completed reload, in  0.064 seconds
+- Completed reload, in  0.072 seconds
 <RI> Initializing input.
 <RI> Input initialized.
+Initialize engine version: 5.0.0f4 (5b98b70ebeb9)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: NVIDIA GeForce GTX 765M (ID=0x11e2)
+    Vendor:   NVIDIA
+    VRAM:     1985 MB
+Begin MonoManager ReloadAssembly
+Platform assembly: C:\Users\Rodolfo\Documents\Unity\TowerDefense_Leap\GameDev_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\Rodolfo\Documents\Unity\TowerDefense_Leap\GameDev_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\Rodolfo\Documents\Unity\TowerDefense_Leap\GameDev_Data\Managed\Assembly-CSharp-firstpass.dll (this message is harmless)
+Loading C:\Users\Rodolfo\Documents\Unity\TowerDefense_Leap\GameDev_Data\Managed\Assembly-CSharp-firstpass.dll into Unity Child Domain
+Platform assembly: C:\Users\Rodolfo\Documents\Unity\TowerDefense_Leap\GameDev_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\Rodolfo\Documents\Unity\TowerDefense_Leap\GameDev_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Users\Rodolfo\Documents\Unity\TowerDefense_Leap\GameDev_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Users\Rodolfo\Documents\Unity\TowerDefense_Leap\GameDev_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: C:\Users\Rodolfo\Documents\Unity\TowerDefense_Leap\GameDev_Data\Managed\LeapCSharp.NET3.5.dll (this message is harmless)
+Loading C:\Users\Rodolfo\Documents\Unity\TowerDefense_Leap\GameDev_Data\Managed\LeapCSharp.NET3.5.dll into Unity Child Domain
+- Completed reload, in  0.077 seconds
+<RI> Initializing input.
+<RI> Input initialized.
+desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
+<RI> Initialized touch support.
+Initialize engine version: 5.0.0f4 (5b98b70ebeb9)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: NVIDIA GeForce GTX 765M (ID=0x11e2)
+    Vendor:   NVIDIA
+    VRAM:     1985 MB
+Begin MonoManager ReloadAssembly
+Platform assembly: C:\Users\Rodolfo\Documents\Unity\TowerDefense_Leap\GameDev_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\Rodolfo\Documents\Unity\TowerDefense_Leap\GameDev_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\Rodolfo\Documents\Unity\TowerDefense_Leap\GameDev_Data\Managed\Assembly-CSharp-firstpass.dll (this message is harmless)
+Loading C:\Users\Rodolfo\Documents\Unity\TowerDefense_Leap\GameDev_Data\Managed\Assembly-CSharp-firstpass.dll into Unity Child Domain
+Platform assembly: C:\Users\Rodolfo\Documents\Unity\TowerDefense_Leap\GameDev_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\Rodolfo\Documents\Unity\TowerDefense_Leap\GameDev_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Users\Rodolfo\Documents\Unity\TowerDefense_Leap\GameDev_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Users\Rodolfo\Documents\Unity\TowerDefense_Leap\GameDev_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: C:\Users\Rodolfo\Documents\Unity\TowerDefense_Leap\GameDev_Data\Managed\LeapCSharp.NET3.5.dll (this message is harmless)
+Loading C:\Users\Rodolfo\Documents\Unity\TowerDefense_Leap\GameDev_Data\Managed\LeapCSharp.NET3.5.dll into Unity Child Domain
+- Completed reload, in  0.092 seconds
+<RI> Initializing input.
+<RI> Input initialized.
+desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
+<RI> Initialized touch support.
 desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
 <RI> Initialized touch support.
 Platform assembly: C:\Users\Rodolfo\Documents\Unity\TowerDefense_Leap\GameDev_Data\Managed\System.Core.dll (this message is harmless)
 Platform assembly: C:\Users\Rodolfo\Documents\Unity\TowerDefense_Leap\GameDev_Data\Managed\System.dll (this message is harmless)
 Setting up 2 worker threads for Enlighten.
-  Thread -> id: 57b0 -> priority: 1 
-  Thread -> id: 5918 -> priority: 1 
-Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 4.329556 ms
+  Thread -> id: 11210 -> priority: 1 
+  Thread -> id: 11254 -> priority: 1 
+Platform assembly: C:\Users\Rodolfo\Documents\Unity\TowerDefense_Leap\GameDev_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: C:\Users\Rodolfo\Documents\Unity\TowerDefense_Leap\GameDev_Data\Managed\System.dll (this message is harmless)
+Platform assembly: C:\Users\Rodolfo\Documents\Unity\TowerDefense_Leap\GameDev_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: C:\Users\Rodolfo\Documents\Unity\TowerDefense_Leap\GameDev_Data\Managed\System.dll (this message is harmless)
 Setting up 2 worker threads for Enlighten.
-  Thread -> id: 5b94 -> priority: 1 
-  Thread -> id: 5950 -> priority: 1 
+  Thread -> id: 109cc -> priority: 1 
+  Thread -> id: 1116c -> priority: 1 
+Setting up 2 worker threads for Enlighten.
+  Thread -> id: 112f8 -> priority: 1 
+  Thread -> id: 11300 -> priority: 1 
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 5.667686 ms
+Setting up 2 worker threads for Enlighten.
+  Thread -> id: dfac -> priority: 1 
+  Thread -> id: 11348 -> priority: 1 
 
-Unloading 27 unused Assets to reduce memory usage. Loaded Objects now: 1320.
-Total: 0.480253 ms (FindLiveObjects: 0.061154 ms CreateObjectMapping: 0.040627 ms MarkObjects: 0.331003 ms  DeleteObjects: 0.047041 ms)
+Unloading 42 unused Assets to reduce memory usage. Loaded Objects now: 1326.
+Total: 0.619669 ms (FindLiveObjects: 0.078688 ms CreateObjectMapping: 0.058160 ms MarkObjects: 0.417389 ms  DeleteObjects: 0.065003 ms)
+
+masizo
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+harder!
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+harder!
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+masizo
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+harder!
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
 
 masizo
  
@@ -63,10 +139,6 @@ masizo
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
 
-harder!
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
 masizo
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
@@ -76,6 +148,10 @@ harder!
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
 
 masizo
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+harder!
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
 
@@ -96,11 +172,154 @@ harder!
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
 
 Unloading 1 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 2.636051 ms
+UnloadTime: 2.550095 ms
 
-Unloading 252 unused Assets to reduce memory usage. Loaded Objects now: 697.
-Total: 0.585028 ms (FindLiveObjects: 0.055594 ms CreateObjectMapping: 0.039771 ms MarkObjects: 0.214254 ms  DeleteObjects: 0.273697 ms)
+Unloading 252 unused Assets to reduce memory usage. Loaded Objects now: 749.
+Total: 0.457588 ms (FindLiveObjects: 0.054739 ms CreateObjectMapping: 0.034212 ms MarkObjects: 0.182180 ms  DeleteObjects: 0.185601 ms)
 
 Setting up 2 worker threads for Enlighten.
-  Thread -> id: 5968 -> priority: 1 
-  Thread -> id: 5be0 -> priority: 1 
+  Thread -> id: 105b4 -> priority: 1 
+  Thread -> id: 11044 -> priority: 1 
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.810402 ms
+
+Unloading 304 unused Assets to reduce memory usage. Loaded Objects now: 820.
+Total: 0.791158 ms (FindLiveObjects: 0.053456 ms CreateObjectMapping: 0.053884 ms MarkObjects: 0.220241 ms  DeleteObjects: 0.462292 ms)
+
+Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 1.102917 ms
+
+Unloading 166 unused Assets to reduce memory usage. Loaded Objects now: 751.
+Total: 0.343405 ms (FindLiveObjects: 0.043192 ms CreateObjectMapping: 0.038061 ms MarkObjects: 0.192016 ms  DeleteObjects: 0.069707 ms)
+
+Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.750531 ms
+
+Unloading 304 unused Assets to reduce memory usage. Loaded Objects now: 820.
+Total: 0.670987 ms (FindLiveObjects: 0.052173 ms CreateObjectMapping: 0.039344 ms MarkObjects: 0.197148 ms  DeleteObjects: 0.381894 ms)
+
+Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 2.474828 ms
+
+Unloading 166 unused Assets to reduce memory usage. Loaded Objects now: 751.
+Total: 1.108049 ms (FindLiveObjects: 0.113755 ms CreateObjectMapping: 0.171061 ms MarkObjects: 0.616675 ms  DeleteObjects: 0.204418 ms)
+
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.952383 ms
+Setting up 2 worker threads for Enlighten.
+  Thread -> id: 10c04 -> priority: 1 
+  Thread -> id: e518 -> priority: 1 
+
+Unloading 302 unused Assets to reduce memory usage. Loaded Objects now: 2114.
+Total: 0.987023 ms (FindLiveObjects: 0.118032 ms CreateObjectMapping: 0.096221 ms MarkObjects: 0.510617 ms  DeleteObjects: 0.261723 ms)
+
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 5.071537 ms
+
+Unloading 305 unused Assets to reduce memory usage. Loaded Objects now: 618.
+Total: 0.822804 ms (FindLiveObjects: 0.041054 ms CreateObjectMapping: 0.061154 ms MarkObjects: 0.234353 ms  DeleteObjects: 0.485813 ms)
+
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 1.138840 ms
+
+Unloading 166 unused Assets to reduce memory usage. Loaded Objects now: 749.
+Total: 0.350247 ms (FindLiveObjects: 0.048324 ms CreateObjectMapping: 0.038061 ms MarkObjects: 0.187739 ms  DeleteObjects: 0.073556 ms)
+
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.812540 ms
+masizo
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+Setting up 2 worker threads for Enlighten.
+  Thread -> id: 110cc -> priority: 1 
+  Thread -> id: 10d20 -> priority: 1 
+
+Unloading 41 unused Assets to reduce memory usage. Loaded Objects now: 1529.
+Total: 0.750531 ms (FindLiveObjects: 0.090662 ms CreateObjectMapping: 0.087241 ms MarkObjects: 0.513611 ms  DeleteObjects: 0.058588 ms)
+
+masizo
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+harder!
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+masizo
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+masizo
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+harder!
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+masizo
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+harder!
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+masizo
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+masizo
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+masizo
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+harder!
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+masizo
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+masizo
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+harder!
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+harder!
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+harder!
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 2.790436 ms
+
+Unloading 252 unused Assets to reduce memory usage. Loaded Objects now: 751.
+Total: 0.594437 ms (FindLiveObjects: 0.047469 ms CreateObjectMapping: 0.043620 ms MarkObjects: 0.201424 ms  DeleteObjects: 0.301067 ms)
+
+Setting up 2 worker threads for Enlighten.
+  Thread -> id: 11138 -> priority: 1 
+  Thread -> id: 10e24 -> priority: 1 
+Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.806553 ms
+
+Unloading 304 unused Assets to reduce memory usage. Loaded Objects now: 820.
+Total: 1.179039 ms (FindLiveObjects: 0.093656 ms CreateObjectMapping: 0.082109 ms MarkObjects: 0.342122 ms  DeleteObjects: 0.660296 ms)
+
+Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.639768 ms
+
+Unloading 166 unused Assets to reduce memory usage. Loaded Objects now: 751.
+Total: 0.383177 ms (FindLiveObjects: 0.053884 ms CreateObjectMapping: 0.040627 ms MarkObjects: 0.213398 ms  DeleteObjects: 0.074839 ms)
+

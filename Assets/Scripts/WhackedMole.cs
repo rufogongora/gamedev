@@ -7,6 +7,12 @@ public class WhackedMole : MonoBehaviour {
 	Controller controller;
 
 
+	public float killMeTime;
+
+	public float position { set; get; }
+	
+
+	float timer;
 
 	// Use this for initialization
 	void Start () {
@@ -14,12 +20,23 @@ public class WhackedMole : MonoBehaviour {
 //		controller = new Controller ();
 //		controller.EnableGesture (Gesture.GestureType.TYPESWIPE);
 //		controller.Config
+		timer = 0f;
 	
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
-	
+		timer += Time.deltaTime;
+		if (timer >= killMeTime) {
+			KillMe();
+		}
+	}
+
+	void KillMe()
+	{
+		moleGen.spawnPoint [(int)position] = false;
+		Destroy (gameObject);
 	}
 
 	void OnCollisionEnter(Collision collision){
@@ -27,7 +44,7 @@ public class WhackedMole : MonoBehaviour {
 		if (collision.gameObject.name == "palm"||collision.gameObject.name  == 
 		    "bone1"||collision.gameObject.name == "bone2" ||collision.gameObject.name == "bone3"){
 
-			Destroy(gameObject);
+			KillMe();
 
 
 			//Debug.Log("hitting mole");

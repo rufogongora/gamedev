@@ -23,15 +23,30 @@ public class moleGen : MonoBehaviour {
 
 
 	//check to see if the spawn point is in use
-	public bool[] spawnPoint = new bool[9];
+	static public bool[] spawnPoint = new bool[9];
 
 	public Vector3[] spawnSpot = new Vector3[9];
 	//spawnSpot = {{1, 1,1},{1, 1,1},{1, 1,1},{1, 1,1},{1, 1,1},{1, 1,1},{1, 1,1},{1, 1,1},{1, 1,1}};
 
 
+	float decreaseMaxSpawnTimer;
+
+
 	// start the mole generator 
 	void Start () {
 		nextSpawnTime = Random.Range (minSpawnTime, maxSpawnTime);
+		int counter = 0;
+		for (int i = 0; i < 3; i++) 
+		{
+			for(int j = 0; j < 3; j++)
+			{
+				spawnSpot[counter] = new Vector3(i*2 -2f, 2.5f, j*2 -2f);
+				counter++;	
+			}
+		}
+
+		decreaseMaxSpawnTimer = 0f;
+
 	}
 
 
@@ -40,32 +55,21 @@ public class moleGen : MonoBehaviour {
 	// spawn moles randomly at at spawn points 
 	void SpawnMoles(){
 
-		//randomly pick spawn point
-		//spawnRange = Random.Range (0, 9);
+		GameObject go = (GameObject)Instantiate (moles);
+
+		int randomPosition = Random.Range (0, spawnSpot.Length - 1);
+
+		if (!spawnPoint [randomPosition]) {
+			go.GetComponent<WhackedMole>().position = randomPosition;
+			go.transform.position = spawnSpot [randomPosition];
+			spawnPoint [randomPosition] = true;
+		} else {
+			Destroy(go);
+			SpawnMoles();
+		}
 
 
-		//if the spot is not taken
-		//if (spawnPoint[spawnRange]==false) {
-
-			float x = Random.Range (-3.25f, 3.25f);
-			float z = Random.Range (-2.75f, 1.75f);
-			GameObject go = (GameObject)Instantiate (moles);
-			go.transform.position = new Vector3 (x, 2.5f, z);
-			theList.InsertIntoList (go);
-
-		//	spawnPoint[spawnRange]=true;
-		//}
-
-		//else if the spot is taken call the function again
-
-		//else {
-		//	SpawnMoles();
-		//}
-
-
-		
-
-		
+	
 	}
 
 	void CheckMoleDeath(){
@@ -85,6 +89,15 @@ public class moleGen : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+
+		decreaseMaxSpawnTimer += Time.deltaTime;
+		if (decreaseMaxSpawnTimer >= 2f) {
+			if (maxSpawnTime >= minSpawnTime + .3)
+			{
+				decreaseMaxSpawnTimer = 0f;
+				maxSpawnTime -= .03f;
+			}
+		}
 		CheckMoleSpawn ();	
 	}
 

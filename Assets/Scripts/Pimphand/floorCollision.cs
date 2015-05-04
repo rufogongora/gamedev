@@ -42,18 +42,49 @@ public class floorCollision : MonoBehaviour {
 		score = (int)slap.deltaDistance.magnitude;
 		newHighscore = HighScore();
 
-		if (newHighscore){
-			slapText.wordScore = "New Highscore!: "+score;
+
+		if (score > 800){
+			slapText.wordScore = "You hit like David Garza: "+score;
 		}
-		if (score < 100){
-			slapText.wordScore = "what a joke: "+score;
+		if (score > 1000){
+			slapText.wordScore = "Take off your diaper and try again: "+score;
 		}
-		else{
-			slapText.wordScore = "The pimp hand is strong in you: "+score;
+		if (score > 1300){
+			slapText.wordScore = "Are you even trying?: "+score;
+		}
+		if (score > 1600){
+			slapText.wordScore = "Yawn...: "+score;
+		}
+		if (score > 1900){
+			slapText.wordScore = "Its ok I guess: "+score;
+		}
+		if (score > 2200){
+			slapText.wordScore = "Not the worst I've seen: "+score;
+		}
+		if (score > 2500){
+			slapText.wordScore = "Pretty good pimp: "+score;
+		}
+		if (score > 3000){
+			slapText.wordScore = "Chris Brown would be proud: "+score;
+		}
+		if (score > 4000){
+			slapText.wordScore = "The lord has blessed your pimphand: "+score;
+		}
+		if (score < 800){
+			slapText.wordScore = "You suck, uninstall the game: "+score;
 		}
 
+		//if (newHighscore){
+		//	slapText.wordScore = "New Highscore!: "+score;
+		//}
+		
+		//Set the robot back to his original point of whatever and stuff
 		slap.redo ();
+
 		landed = false;
+
+
+
 
 
 		//Instantiate (prefab, new Vector3 (164f, 95f, -62f), Quaternion.identity);

@@ -3,7 +3,7 @@ using System.Collections;
 using Leap;
 
 
-
+//Robot Position: 414.25, 153.93, -35.25
 //Class for detecting slaps
 public class SlapDetect : MonoBehaviour {
 
@@ -11,6 +11,7 @@ public class SlapDetect : MonoBehaviour {
 	public AudioClip[] compliment;			//Store the voices that compliment the user
 	public AudioClip[] insult;				//Store the voices that insult the user
 	public AudioClip hit;
+	public AudioClip slowHit;
 	AudioSource audio;
 	public bool soundPlayed;
 
@@ -24,12 +25,13 @@ public class SlapDetect : MonoBehaviour {
 	public int speed;						//To store swipe speed
 	public int[] speed10frames; 			//Speed from the last 10 frames
 	public int pos;							//To store the position of the hand
-	Controller controller;					//Leap Motion controller
+	Controller controller;					//Leap Motion controller	
 
 	//position vectors
 	public Vector3 initialDistance;
 	public Vector3 finalDistance;
 	public Vector3 deltaDistance;
+	public Vector3 spawnpoint;
 
 	//Cameras for robot and main
 	public Camera mcamera;
@@ -37,13 +39,11 @@ public class SlapDetect : MonoBehaviour {
 
 	public float robotSpeed;
 	public Rigidbody rb;
-	public Rigidbody srb;
-
-	public Transform tf;
 
 	//Run at the start
 	void Start () {
-		srb = gameObject.GetComponent<Rigidbody> ();
+		PlayerPrefs.DeleteAll ();
+		spawnpoint = new Vector3(414.25f, 153.93f, -35.25f);
 		soundPlayed = false;
 		initialDistance = gameObject.GetComponent<Rigidbody> ().position;
 		//Set the variables
@@ -89,17 +89,11 @@ public class SlapDetect : MonoBehaviour {
 		rb = gameObject.GetComponent<Rigidbody> ();
 //		rb.velocity = new Vector3 (0, 0, 0);
 		rb.velocity = Vector3.zero;
-		transform.position = tf.position;
-		transform.rotation = tf.rotation;
+		rb.angularVelocity = Vector3.zero;
+		transform.position = new Vector3 (414.25f, 153.93f, -35.25f);
+		transform.localEulerAngles = new Vector3(0,0,0);
 		soundPlayed = false;
 	}
-
-	public void land(){
-		transform.rotation = tf.rotation;	
-		Debug.Log (transform.rotation);
-	}
-
-
 	//Store the speed of the last 10 frames and return the average
 	int shift(int[] arr, int lastSpeed){
 
@@ -126,8 +120,9 @@ public class SlapDetect : MonoBehaviour {
 		robotSpeed = gameObject.GetComponent<Rigidbody> ().velocity.magnitude;
 
 		//Follow the robot with the camera when hit
-		rcamera.transform.position = new Vector3 (finalDistance.x, finalDistance.y, finalDistance.z - 10f);
+		rcamera.transform.position = new Vector3 (finalDistance.x, finalDistance.y, finalDistance.z - 40f);
 		rcamera.transform.rotation = Quaternion.Euler (Vector3.zero);
+
 
 		//Get all actions with leap motion done in the last frame
 		Frame frame = controller.Frame ();

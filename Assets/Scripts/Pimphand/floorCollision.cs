@@ -45,7 +45,6 @@ public class floorCollision : MonoBehaviour {
 			newHighscore = HighScore ();
 		}
 
-
 		if (score > 800 && landed == false){
 			slapText.wordScore = "You hit like David Garza: "+score;
 		}

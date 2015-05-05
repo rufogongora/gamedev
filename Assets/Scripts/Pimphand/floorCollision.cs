@@ -17,7 +17,7 @@ public class floorCollision : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
-		landed = true;
+		landed = false;
 		score = PlayerPrefs.GetInt ("highscore");
 	}
 	
@@ -38,39 +38,42 @@ public class floorCollision : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider other) {
-		bool newHighscore = false;
-		score = (int)slap.deltaDistance.magnitude;
-		newHighscore = HighScore();
+
+		if (!landed) {
+			bool newHighscore = false;
+			score = (int)slap.deltaDistance.magnitude;
+			newHighscore = HighScore ();
+		}
 
 
-		if (score > 800){
+		if (score > 800 && landed == false){
 			slapText.wordScore = "You hit like David Garza: "+score;
 		}
-		if (score > 1000){
+		if (score > 1000 && landed == false){
 			slapText.wordScore = "Take off your diaper and try again: "+score;
 		}
-		if (score > 1300){
+		if (score > 1300 && landed == false){
 			slapText.wordScore = "Are you even trying?: "+score;
 		}
-		if (score > 1600){
+		if (score > 1600 && landed == false){
 			slapText.wordScore = "Yawn...: "+score;
 		}
-		if (score > 1900){
+		if (score > 1900 && landed == false){
 			slapText.wordScore = "Its ok I guess: "+score;
 		}
-		if (score > 2200){
+		if (score > 2200 && landed == false){
 			slapText.wordScore = "Not the worst I've seen: "+score;
 		}
-		if (score > 2500){
+		if (score > 2500 && landed == false){
 			slapText.wordScore = "Pretty good pimp: "+score;
 		}
-		if (score > 3000){
+		if (score > 3000 && landed == false){
 			slapText.wordScore = "Chris Brown would be proud: "+score;
 		}
-		if (score > 4000){
+		if (score > 4000 && landed == false){
 			slapText.wordScore = "The lord has blessed your pimphand: "+score;
 		}
-		if (score < 800){
+		if (score < 800 && landed == false){
 			slapText.wordScore = "You suck, uninstall the game: "+score;
 		}
 
@@ -79,9 +82,9 @@ public class floorCollision : MonoBehaviour {
 		//}
 		
 		//Set the robot back to his original point of whatever and stuff
-		slap.redo ();
+		slap.restart = true;
 
-		landed = false;
+		landed = true;
 
 
 

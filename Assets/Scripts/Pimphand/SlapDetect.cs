@@ -14,10 +14,13 @@ public class SlapDetect : MonoBehaviour {
 	public AudioClip slowHit;
 	AudioSource audio;
 	public bool soundPlayed;
+	public bool restart;
+
 
 	//Class objects to access the text on screen
 	public HighscoreText scoreText;			//Access the text that shows the highscore
 	public SlapText speedText;				//Access the text that shows how fast they slapped
+	public floorCollision fc; 				//Access the floorCollision class
 	public int score;						//Holds the score for the user
 	
 	//Position and speed variables for the hand
@@ -42,13 +45,13 @@ public class SlapDetect : MonoBehaviour {
 
 	//Run at the start
 	void Start () {
+		restart = true;
 		PlayerPrefs.DeleteAll ();
 		spawnpoint = new Vector3(414.25f, 153.93f, -35.25f);
 		soundPlayed = false;
 		initialDistance = gameObject.GetComponent<Rigidbody> ().position;
 		//Set the variables
 		audio = GetComponent<AudioSource>();
-		//scoreText.highScore = "Highscore: "+PlayerPrefs.GetInt ("highscore").ToString();
 		speed10frames = new int[10];
 		//Leap Motion controller declaration
 		controller = new Controller ();
@@ -65,8 +68,7 @@ public class SlapDetect : MonoBehaviour {
 		controller.Config.Save ();
 		speed = 0;
 	}
-
-
+	
 	void PlaySound(AudioClip[] sounds){
 		if (!soundPlayed){
 			soundPlayed = true;
@@ -78,22 +80,38 @@ public class SlapDetect : MonoBehaviour {
 	bool HighScore(){
 		if (score > PlayerPrefs.GetInt ("highscore")) {
 			PlayerPrefs.SetInt("highscore", score);
-			//scoreText.highScore = "Highscore: "+PlayerPrefs.GetInt ("highscore").ToString();
 			return true;
 		}
 		return false;
 	}
 
-	//Hit the robot again after it lands
+
+	public void spawnRobot(){
+		if (handReady()) {
+			speedText.wordScore =  "Hit the robot as far as you can";
+			redo ();
+			restart = false;
+		}
+	}
+
+	public bool handReady(){
+		if (pos > 100)
+			return true;
+		else 
+			return false;
+	}
+
+	//Move the robot back to starting position the robot again after it lands
 	public void redo(){
 		rb = gameObject.GetComponent<Rigidbody> ();
-//		rb.velocity = new Vector3 (0, 0, 0);
 		rb.velocity = Vector3.zero;
 		rb.angularVelocity = Vector3.zero;
 		transform.position = new Vector3 (414.25f, 153.93f, -35.25f);
 		transform.localEulerAngles = new Vector3(0,0,0);
 		soundPlayed = false;
 	}
+
+
 	//Store the speed of the last 10 frames and return the average
 	int shift(int[] arr, int lastSpeed){
 
@@ -115,6 +133,10 @@ public class SlapDetect : MonoBehaviour {
 	//Run every frame
 	void Update(){
 
+		if (restart)
+			spawnRobot ();
+
+
 		finalDistance = gameObject.GetComponent<Rigidbody> ().position;
 		deltaDistance = finalDistance - initialDistance;
 		robotSpeed = gameObject.GetComponent<Rigidbody> ().velocity.magnitude;
@@ -122,6 +144,8 @@ public class SlapDetect : MonoBehaviour {
 		//Follow the robot with the camera when hit
 		rcamera.transform.position = new Vector3 (finalDistance.x, finalDistance.y, finalDistance.z - 40f);
 		rcamera.transform.rotation = Quaternion.Euler (Vector3.zero);
+
+		handReady();
 
 
 		//Get all actions with leap motion done in the last frame
@@ -136,9 +160,9 @@ public class SlapDetect : MonoBehaviour {
 			Hand hand = frame.Hands.Rightmost;
 
 
-			if (hand != Hand.Invalid) {
-				Debug.Log ("HAYYYYYYY");
-			}
+//			if (hand != Hand.Invalid) {
+//				Debug.Log ("HAYYYYYYY");
+//			}
 			//Get velocity and position of the hand in the current frame
 			Vector velocity = hand.PalmVelocity;
 			Vector position = hand.PalmPosition;
@@ -187,6 +211,7 @@ public class SlapDetect : MonoBehaviour {
 				PlaySound (compliment);
 			}
 
+			fc.landed = false;
 			mcamera.enabled = false;
 			rcamera.enabled = true;
 			

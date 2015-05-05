@@ -4,39 +4,36 @@ using Leap;
 
 public class WhackedMole : MonoBehaviour {
 
-	Controller controller;
-
-
 	public float killMeTime;
 
-	public float position { set; get; }
-	
+	public int position{ set; get; }
+
 
 	float timer;
 
-	// Use this for initialization
+	// start the timer for mole death
 	void Start () {
 
-//		controller = new Controller ();
-//		controller.EnableGesture (Gesture.GestureType.TYPESWIPE);
-//		controller.Config
 		timer = 0f;
-	
 
+	}
+
+	void KillMe(){
+
+		//GetComponent<moleGen> ().spawnPoint [(int)position] = false;
+		//spawnPoint [position] = false;
+		//moleGen moleBool = GetComponent<moleGen> ();
+		moleGen.spawnPoint [position] = false;
+		Destroy (gameObject);
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		timer += Time.deltaTime;
-		if (timer >= killMeTime) {
-			KillMe();
-		}
+	timer += Time.deltaTime;
+	if (timer >= killMeTime) {
+		//KillMe();
 	}
-
-	void KillMe()
-	{
-		moleGen.spawnPoint [(int)position] = false;
-		Destroy (gameObject);
+	
 	}
 
 	void OnCollisionEnter(Collision collision){
@@ -45,9 +42,6 @@ public class WhackedMole : MonoBehaviour {
 		    "bone1"||collision.gameObject.name == "bone2" ||collision.gameObject.name == "bone3"){
 
 			KillMe();
-
-
-			//Debug.Log("hitting mole");
 			
 		}
 		

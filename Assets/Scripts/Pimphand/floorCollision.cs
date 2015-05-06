@@ -38,9 +38,8 @@ public class floorCollision : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider other) {
-
+		bool newHighscore = false;
 		if (!landed) {
-			bool newHighscore = false;
 			score = (int)slap.deltaDistance.magnitude;
 			newHighscore = HighScore ();
 		}
@@ -70,15 +69,30 @@ public class floorCollision : MonoBehaviour {
 			slapText.wordScore = "Chris Brown would be proud: "+score;
 		}
 		if (score > 4000 && landed == false){
+			slapText.wordScore = "Mayweather, is that you?: "+score;
+		}
+		if (score > 5000 && landed == false){
+			slapText.wordScore = "You Rodney King'd him!: "+score;
+		}		
+		if (score > 6000 && landed == false){
+			slapText.wordScore = "PLAYAAAAAA: "+score;
+		}
+		if (score > 7000 && landed == false){
+			slapText.wordScore = "DAYUMMMMMMM: "+score;
+		}
+		if (score > 8000 && landed == false){
+			slapText.wordScore = "The lord has blessed your pimphand: "+score;
+		}
+		if (score > 9000 && landed == false){
 			slapText.wordScore = "The lord has blessed your pimphand: "+score;
 		}
 		if (score < 800 && landed == false){
 			slapText.wordScore = "You suck, uninstall the game: "+score;
 		}
 
-		//if (newHighscore){
-		//	slapText.wordScore = "New Highscore!: "+score;
-		//}
+		if (newHighscore){
+			slapText.wordScore = "New Highscore!: "+score;
+		}
 		
 		//Set the robot back to his original point of whatever and stuff
 		slap.restart = true;

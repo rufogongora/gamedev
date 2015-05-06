@@ -46,7 +46,7 @@ public class SlapDetect : MonoBehaviour {
 	//Run at the start
 	void Start () {
 		restart = true;
-		PlayerPrefs.DeleteAll ();
+		//PlayerPrefs.DeleteAll ();
 		spawnpoint = new Vector3(414.25f, 153.93f, -35.25f);
 		soundPlayed = false;
 		initialDistance = gameObject.GetComponent<Rigidbody> ().position;
@@ -88,14 +88,14 @@ public class SlapDetect : MonoBehaviour {
 
 	public void spawnRobot(){
 		if (handReady()) {
-			speedText.wordScore =  "Hit the robot as far as you can";
+			//speedText.wordScore =  "Hit the robot as far as you can";
 			redo ();
 			restart = false;
 		}
 	}
 
 	public bool handReady(){
-		if (pos > 100)
+		if (pos > 90)
 			return true;
 		else 
 			return false;
@@ -142,7 +142,7 @@ public class SlapDetect : MonoBehaviour {
 		robotSpeed = gameObject.GetComponent<Rigidbody> ().velocity.magnitude;
 
 		//Follow the robot with the camera when hit
-		rcamera.transform.position = new Vector3 (finalDistance.x, finalDistance.y, finalDistance.z - 40f);
+		rcamera.transform.position = new Vector3 (finalDistance.x , finalDistance.y, finalDistance.z -40f);
 		rcamera.transform.rotation = Quaternion.Euler (Vector3.zero);
 
 		handReady();

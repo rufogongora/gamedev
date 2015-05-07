@@ -45,6 +45,7 @@ public class SlapDetect : MonoBehaviour {
 
 	//Run at the start
 	void Start () {
+		rb = gameObject.GetComponent<Rigidbody> ();
 		restart = true;
 		//PlayerPrefs.DeleteAll ();
 		spawnpoint = new Vector3(414.25f, 153.93f, -35.25f);
@@ -111,7 +112,6 @@ public class SlapDetect : MonoBehaviour {
 
 	//Move the robot back to starting position the robot again after it lands
 	public void redo(){
-		rb = gameObject.GetComponent<Rigidbody> ();
 		rb.velocity = Vector3.zero;
 		rb.angularVelocity = Vector3.zero;
 		transform.position = new Vector3 (414.25f, 153.93f, -35.25f);
@@ -145,12 +145,19 @@ public class SlapDetect : MonoBehaviour {
 			spawnRobot ();
 
 
+		Vector3 leftRight = rb.velocity;
+
+
+		rb.velocity = new Vector3 (leftRight.x, leftRight.y, 0);
+		//rb.position.z = 37f;
+
+
 		finalDistance = gameObject.GetComponent<Rigidbody> ().position;
 		deltaDistance = finalDistance - initialDistance;
 		robotSpeed = gameObject.GetComponent<Rigidbody> ().velocity.magnitude;
 
 		//Follow the robot with the camera when hit
-		rcamera.transform.position = new Vector3 (finalDistance.x , finalDistance.y, finalDistance.z -40f);
+		rcamera.transform.position = new Vector3 (finalDistance.x , 150f, finalDistance.z -300f);
 		rcamera.transform.rotation = Quaternion.Euler (Vector3.zero);
 
 		handReady();

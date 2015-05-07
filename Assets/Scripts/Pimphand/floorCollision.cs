@@ -96,14 +96,7 @@ public class floorCollision : MonoBehaviour {
 		
 		//Set the robot back to his original point of whatever and stuff
 		slap.restart = true;
-
 		landed = true;
-
-
-
-
-
-		//Instantiate (prefab, new Vector3 (164f, 95f, -62f), Quaternion.identity);
 		mcamera.enabled = true;
 		rcamera.enabled = false;
 	}

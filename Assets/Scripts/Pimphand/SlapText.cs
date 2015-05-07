@@ -8,7 +8,7 @@ public class SlapText : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		wordScore = "Lift your hand over the card to spawn the robot";
+		wordScore = "Slap the sandbag as far as you can";
 		speedText = GetComponent <Text> ();
 	}
 	

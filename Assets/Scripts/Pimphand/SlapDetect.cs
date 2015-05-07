@@ -68,15 +68,21 @@ public class SlapDetect : MonoBehaviour {
 		controller.Config.Save ();
 		speed = 0;
 	}
-	
-	void PlaySound(AudioClip[] sounds){
+
+
+	//Play sound effect, onHit sound dependant upon velocity
+	void PlaySound(AudioClip[] sounds, bool speed){
 		if (!soundPlayed){
 			soundPlayed = true;
-			audio.PlayOneShot(hit);
+			if (speed)
+				audio.PlayOneShot(hit);
+			else
+				audio.PlayOneShot(slowHit);
 			audio.PlayOneShot (sounds [Random.Range (0, sounds.Length)]);
 		}
 	}	              
 
+	//Update the user highscore on screen
 	bool HighScore(){
 		if (score > PlayerPrefs.GetInt ("highscore")) {
 			PlayerPrefs.SetInt("highscore", score);
@@ -85,7 +91,7 @@ public class SlapDetect : MonoBehaviour {
 		return false;
 	}
 
-
+	//Spawn a robot upon promping with a gesture
 	public void spawnRobot(){
 		if (handReady()) {
 			//speedText.wordScore =  "Hit the robot as far as you can";
@@ -94,6 +100,8 @@ public class SlapDetect : MonoBehaviour {
 		}
 	}
 
+
+	//Return if the hand is in place to spawn or not
 	public bool handReady(){
 		if (pos > 90)
 			return true;
@@ -198,17 +206,18 @@ public class SlapDetect : MonoBehaviour {
 		} 
 		
 	}
-	
+
+	//On hand colliding with an object, do: 
 	void OnCollisionEnter(Collision collision){
 		//If the robot collides with the hand
 		if (collision.gameObject.name == "palm"||collision.gameObject.name == 
 		    "bone1"||collision.gameObject.name == "bone2" ||collision.gameObject.name == "bone3"){
 
 			if (speed < 1000){
-				PlaySound (insult);
+				PlaySound (insult, false);
 			}
 			else{
-				PlaySound (compliment);
+				PlaySound (compliment, true);
 			}
 
 			fc.landed = false;

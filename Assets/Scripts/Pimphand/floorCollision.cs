@@ -30,7 +30,7 @@ public class floorCollision : MonoBehaviour {
 
 	bool HighScore(){
 		if (score > PlayerPrefs.GetInt ("highscore")) {
-			PlayerPrefs.SetInt("highscore", (int)slap.deltaDistance.magnitude);
+			PlayerPrefs.SetInt("highscore", (int)slap.deltaDistance.x*(-1));
 			scoreText.highScore = "Highscore: "+PlayerPrefs.GetInt ("highscore").ToString();
 			return true;
 		}
@@ -40,7 +40,7 @@ public class floorCollision : MonoBehaviour {
 	void OnTriggerEnter(Collider other) {
 		bool newHighscore = false;
 		if (!landed) {
-			score = (int)slap.deltaDistance.magnitude;
+			score = (int)slap.deltaDistance.x*(-1);
 			newHighscore = HighScore ();
 		}
 
@@ -88,6 +88,9 @@ public class floorCollision : MonoBehaviour {
 		}
 		if (score < 800 && landed == false){
 			slapText.wordScore = "You suck, uninstall the game: "+score;
+		}
+		if (score < 0 && landed == false){
+			slapText.wordScore = "HAHAHAHA SO BAD: "+score;
 		}
 
 		if (newHighscore){

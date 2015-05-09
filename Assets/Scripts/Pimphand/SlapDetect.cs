@@ -174,7 +174,7 @@ public class SlapDetect : MonoBehaviour {
 		robotSpeed = gameObject.GetComponent<Rigidbody> ().velocity.magnitude;
 
 		if (!fc.landed && startGame)
-			speedText.wordScore = "Distance: " + (int)deltaDistance.magnitude;
+			speedText.wordScore = "Distance: " + (int)deltaDistance.x*(-1)+" Height: "+(int)rb.position.y;
 
 		//Follow the robot with the camera when hit
 		rcamera.transform.position = new Vector3 (finalDistance.x , 150f, finalDistance.z -300f);

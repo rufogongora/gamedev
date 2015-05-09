@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 
+//Test
 public class SlapText : MonoBehaviour {
 	public string wordScore;
 	public Text speedText;

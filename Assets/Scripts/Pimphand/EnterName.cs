@@ -6,18 +6,28 @@ public class EnterName : MonoBehaviour {
 
 	public Text nameText;
 	public string changeName;
-	public Transform test;
+	public bool nameEntered;
+	public bool newHighscore;
 
 	// Use this for initialization
 	void Start () {
-		test = GetComponent<InputField> ();
+		nameEntered = false;
 		nameText = GetComponent<Text> ();
-		test.position = new Vector3 (100, 100, 100);
+		Debug.Log (PlayerPrefs.GetInt ("highscore"));
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		//Debug.Log (nameText.text);
-		//nameText.text = highScore;
+
+		changeName = nameText.text;
 	}
+
+	public void OnGUI () {
+		if (Event.current.type == EventType.KeyDown && Event.current.keyCode == KeyCode.Return) {
+			changeName = nameText.text;
+			Debug.Log (changeName);
+			nameEntered = true;
+		}
+	}
+
 }

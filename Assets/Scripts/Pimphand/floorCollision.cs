@@ -25,13 +25,15 @@ public class floorCollision : MonoBehaviour {
 	void Update () {
 		currentHighscore = PlayerPrefs.GetInt ("highscore");
 		robotSpeed = slap.robotSpeed;
+
+
+		
 	}
-
-
+	
+	
 	bool HighScore(){
 		if (score > PlayerPrefs.GetInt ("highscore")) {
 			PlayerPrefs.SetInt("highscore", (int)slap.deltaDistance.x*(-1));
-			scoreText.highScore = "Highscore: "+PlayerPrefs.GetInt ("highscore").ToString();
 			return true;
 		}
 		return false;
@@ -93,15 +95,21 @@ public class floorCollision : MonoBehaviour {
 			slapText.wordScore = "HAHAHAHA SO BAD: "+score;
 		}
 
-		if (newHighscore){
-			slapText.wordScore = "New Highscore!: "+score;
-		}
-		
+
+
 		//Set the robot back to his original point of whatever and stuff
 		slap.restart = true;
 		landed = true;
 		mcamera.enabled = true;
 		rcamera.enabled = false;
 		slap.explosion (landed);
+		
+		
+
+		if (newHighscore){
+			slapText.wordScore = "New Highscore!: "+score;
+			scoreText.highScore = name+": "+PlayerPrefs.GetInt ("highscore").ToString();
+		
+		}
 	}
 }

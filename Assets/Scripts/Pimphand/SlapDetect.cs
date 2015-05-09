@@ -98,15 +98,7 @@ public class SlapDetect : MonoBehaviour {
 		if (landed)
 			audio.PlayOneShot (explode);
 	}
-
-	//Update the user highscore on screen
-	bool HighScore(){
-		if (score > PlayerPrefs.GetInt ("highscore")) {
-			PlayerPrefs.SetInt("highscore", score);
-			return true;
-		}
-		return false;
-	}
+	
 
 	//Spawn a robot upon promping with a gesture
 	public void spawnRobot(){

@@ -9,12 +9,14 @@ public class EnterName : MonoBehaviour {
 	public bool nameEntered;
 	public bool newHighscore;
 	bool updated;
+	int score;
 
 	// Use this for initialization
 	void Start () {
 		updated = false;
 		nameEntered = false;
 		nameText = GetComponent<Text> ();
+		score = PlayerPrefs.GetInt ("highscore");
 
 	}
 
@@ -22,14 +24,13 @@ public class EnterName : MonoBehaviour {
 	void Update () {
 		if (nameEntered) {
 			namepls ();
-			Debug.Log ("back to main game");
+
+			Application.LoadLevel("Pimphand");
 		}
 	}
 
-
 	void namepls(){
 		if (!updated) {
-			int score = 103;
 			int tempint = 0;
 			string tempstring = "";
 			for (int i=1; i<=5; i++) {

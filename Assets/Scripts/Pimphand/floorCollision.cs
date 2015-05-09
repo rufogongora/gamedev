@@ -22,16 +22,18 @@ public class floorCollision : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		currentHighscore = PlayerPrefs.GetInt ("highscore");
 		robotSpeed = slap.robotSpeed;
+	}
 
 
-		
+	IEnumerator StartLoader () 
+	{
+		yield return new WaitForSeconds(3);
+		Application.LoadLevel("pimpScore");
 	}
 	
-	
 	bool HighScore(){
-		if (score > PlayerPrefs.GetInt ("highscore")) {
+		if (score > PlayerPrefs.GetInt ("highscorePos5")) {
 			PlayerPrefs.SetInt("highscore", (int)slap.deltaDistance.x*(-1));
 			return true;
 		}
@@ -107,6 +109,7 @@ public class floorCollision : MonoBehaviour {
 
 		if (newHighscore){
 			slapText.wordScore = "New Highscore!: "+score;
+			StartCoroutine(StartLoader());
 		}
 	}
 }

@@ -21,7 +21,6 @@ public class SlapDetect : MonoBehaviour {
 
 
 	//Class objects to access the text on screen
-	public HighscoreText scoreText;			//Access the text that shows the highscore
 	public SlapText speedText;				//Access the text that shows how fast they slapped
 	public floorCollision fc; 				//Access the floorCollision class
 	public int score;						//Holds the score for the user

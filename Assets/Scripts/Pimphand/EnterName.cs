@@ -8,48 +8,52 @@ public class EnterName : MonoBehaviour {
 	public string changeName;
 	public bool nameEntered;
 	public bool newHighscore;
+	bool updated;
 
 	// Use this for initialization
 	void Start () {
+		updated = false;
 		nameEntered = false;
 		nameText = GetComponent<Text> ();
-		Debug.Log (PlayerPrefs.GetInt ("highscore"));
-
-		int score = 100;
-
-		int temp = 0;
-
-		for(int i=1; i<=5; i++) //for top 5 highscores
-		{
-			if(PlayerPrefs.GetInt("highscorePos"+i)<score)     //if cuurent score is in top 5
-			{
-				temp=PlayerPrefs.GetInt("highscorePos"+i);     //store the old highscore in temp varible to shift it down 
-				PlayerPrefs.SetInt("highscorePos"+i,score);     //store the currentscore to highscores
-				if(i<5)                                        //do this for shifting scores down
-				{
-					int j=i+1;
-					score = PlayerPrefs.GetInt("highscorePos"+j);
-					PlayerPrefs.SetInt("highscorePos"+j,temp); 
-				}
-			}
-			Debug.Log (PlayerPrefs.GetString("nameScorePos"+i)+" "+PlayerPrefs.GetInt("highscorePos"+i));
-		}
-
-
-
 
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
+		if (nameEntered) {
+			namepls ();
+			Debug.Log ("back to main game");
+		}
+	}
 
-		changeName = nameText.text;
+
+	void namepls(){
+		if (!updated) {
+			int score = 103;
+			int tempint = 0;
+			string tempstring = "";
+			for (int i=1; i<=5; i++) {
+				if (PlayerPrefs.GetInt ("highscorePos" + i) < score) {
+					tempint = PlayerPrefs.GetInt ("highscorePos" + i);  
+					tempstring = PlayerPrefs.GetString ("nameScorePos" + i); 
+					PlayerPrefs.SetInt ("highscorePos" + i, score); 
+					PlayerPrefs.SetString ("nameScorePos" + i, changeName);
+					if (i < 5) {
+						int j = i + 1;
+						score = PlayerPrefs.GetInt ("highscorePos" + j);
+						PlayerPrefs.SetInt ("highscorePos" + j, tempint); 
+						PlayerPrefs.SetString ("nameScorePos" + j, tempstring); 
+					}
+				}
+				Debug.Log (PlayerPrefs.GetString ("nameScorePos" + i) + " " + PlayerPrefs.GetInt ("highscorePos" + i));
+			}
+			updated=true;
+		}
 	}
 
 	public void OnGUI () {
 		if (Event.current.type == EventType.KeyDown && Event.current.keyCode == KeyCode.Return) {
 			changeName = nameText.text;
-			Debug.Log (changeName);
 			nameEntered = true;
 		}
 	}

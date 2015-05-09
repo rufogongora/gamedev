@@ -2,7 +2,6 @@
 using System.Collections;
 
 public class floorCollision : MonoBehaviour {
-	public HighscoreText scoreText;
 	public SlapText slapText;
 	public SlapDetect slap;
 	public float robotSpeed;
@@ -108,8 +107,6 @@ public class floorCollision : MonoBehaviour {
 
 		if (newHighscore){
 			slapText.wordScore = "New Highscore!: "+score;
-			scoreText.highScore = name+": "+PlayerPrefs.GetInt ("highscore").ToString();
-		
 		}
 	}
 }

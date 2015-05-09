@@ -12,9 +12,12 @@ public class SlapDetect : MonoBehaviour {
 	public AudioClip[] insult;				//Store the voices that insult the user
 	public AudioClip hit;
 	public AudioClip slowHit;
+	public AudioClip explode; 
 	AudioSource audio;
-	public bool soundPlayed;
+	bool soundPlayed;
+	bool startGame; 
 	public bool restart;
+
 
 
 	//Class objects to access the text on screen
@@ -46,10 +49,11 @@ public class SlapDetect : MonoBehaviour {
 	//Run at the start
 	void Start () {
 		rb = gameObject.GetComponent<Rigidbody> ();
+		soundPlayed = false;
 		restart = true;
+		startGame = false;
 		//PlayerPrefs.DeleteAll ();
 		spawnpoint = new Vector3(414.25f, 153.93f, -35.25f);
-		soundPlayed = false;
 		initialDistance = gameObject.GetComponent<Rigidbody> ().position;
 		//Set the variables
 		audio = GetComponent<AudioSource>();
@@ -67,6 +71,13 @@ public class SlapDetect : MonoBehaviour {
 		controller.Config.SetFloat ("Gesture.Swipe.MinLength", 1.0f);
 		controller.Config.SetFloat ("Gesture.Swipe.MinVelocity", 1.0f);
 		controller.Config.Save ();
+
+		controller.EnableGesture (Gesture.GestureType.TYPESCREENTAP);
+		controller.Config.SetFloat("Gesture.ScreenTap.MinForwardVelocity", 30.0f);
+		controller.Config.SetFloat("Gesture.ScreenTap.HistorySeconds", 2.0f);
+		controller.Config.SetFloat("Gesture.ScreenTap.MinDistance", 1.0f);
+		controller.Config.Save();
+
 		speed = 0;
 	}
 
@@ -81,7 +92,13 @@ public class SlapDetect : MonoBehaviour {
 				audio.PlayOneShot(slowHit);
 			audio.PlayOneShot (sounds [Random.Range (0, sounds.Length)]);
 		}
-	}	              
+	}	
+
+	//Play explosion
+	public void explosion(bool landed){
+		if (landed)
+			audio.PlayOneShot (explode);
+	}
 
 	//Update the user highscore on screen
 	bool HighScore(){
@@ -156,6 +173,9 @@ public class SlapDetect : MonoBehaviour {
 		deltaDistance = finalDistance - initialDistance;
 		robotSpeed = gameObject.GetComponent<Rigidbody> ().velocity.magnitude;
 
+		if (!fc.landed && startGame)
+			speedText.wordScore = "Distance: " + (int)deltaDistance.magnitude;
+
 		//Follow the robot with the camera when hit
 		rcamera.transform.position = new Vector3 (finalDistance.x , 150f, finalDistance.z -300f);
 		rcamera.transform.rotation = Quaternion.Euler (Vector3.zero);
@@ -171,16 +191,19 @@ public class SlapDetect : MonoBehaviour {
 		//For each gesture in gesture list
 		for (int i = 0; i < gestures.Count; i++)
 		{
+			//Get the gestures
+			Gesture gesture = gestures[i];
 			//Hand declaration
 			Hand hand = frame.Hands.Rightmost;
 
-
+			//See if the hand exists in the scene
 //			if (hand != Hand.Invalid) {
 //				Debug.Log ("HAYYYYYYY");
 //			}
-			//Get velocity and position of the hand in the current frame
+			//Get velocit y and position of the hand in the current frame
 			Vector velocity = hand.PalmVelocity;
 			Vector position = hand.PalmPosition;
+
 
 			//Get the speed of the hand and it's position
 			speed = (int)velocity.x;
@@ -188,29 +211,16 @@ public class SlapDetect : MonoBehaviour {
 			speed = shift(speed10frames, speed);
 			pos = (int)position.x;
 
-			//Debug.Log(speed);
-			//speedText.wordScore = pos.ToString();
-			//Get the gesture to detect for circle
-			//Gesture gesture = gestures[i];
-//			if(gesture.Type == Gesture.GestureType.TYPE_CIRCLE){
-//				if (pos > 245){
-//					//Application.LoadLevel ("slap");
-//					Debug.Log ("detected");
-//					transform.position = new Vector3(-2f, 2f, -4f);
-//				}
-//				SwipeGesture Swipe = new SwipeGesture(gesture);
-//				//Get the swipe speed and direction (Purpose TBD)
-//				float SwipeSpeed = Swipe.Speed;
-//				Vector swipeDirection = Swipe.Direction;
-//
-//			}
-			
-		}
 
-		//Reload the level to play again
-		if (Input.GetKeyDown (KeyCode.Return)) {  
-			Application.LoadLevel ("slap");  
-		} 
+			//If the hand touches the main menu, go back to the main menu
+			if (position.y > 220 && position.x > 160){
+				if(gesture.Type == Gesture.GestureType.TYPESCREENTAP){
+						//load main menu here
+						Debug.Log ("detected");
+
+				}
+			}
+		}
 		
 	}
 
@@ -220,13 +230,14 @@ public class SlapDetect : MonoBehaviour {
 		if (collision.gameObject.name == "palm"||collision.gameObject.name == 
 		    "bone1"||collision.gameObject.name == "bone2" ||collision.gameObject.name == "bone3"){
 
-			if (speed < 1000){
+			if (speed < 800){
 				PlaySound (insult, false);
 			}
 			else{
 				PlaySound (compliment, true);
 			}
 
+			startGame = true;
 			fc.landed = false;
 			mcamera.enabled = false;
 			rcamera.enabled = true;

@@ -11,17 +11,32 @@ public class EnterName : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		int [] testArr = new int [5];
-		int [] testArr2;
 		nameEntered = false;
 		nameText = GetComponent<Text> ();
 		Debug.Log (PlayerPrefs.GetInt ("highscore"));
 
-		testArr2 = PlayerPrefsX.GetIntArray ("testInts");
+		int score = 100;
 
-		for (int i = 0; i < 5; i++) {
-			Debug.Log(testArr2[i]);
+		int temp = 0;
+
+		for(int i=1; i<=5; i++) //for top 5 highscores
+		{
+			if(PlayerPrefs.GetInt("highscorePos"+i)<score)     //if cuurent score is in top 5
+			{
+				temp=PlayerPrefs.GetInt("highscorePos"+i);     //store the old highscore in temp varible to shift it down 
+				PlayerPrefs.SetInt("highscorePos"+i,score);     //store the currentscore to highscores
+				if(i<5)                                        //do this for shifting scores down
+				{
+					int j=i+1;
+					score = PlayerPrefs.GetInt("highscorePos"+j);
+					PlayerPrefs.SetInt("highscorePos"+j,temp); 
+				}
+			}
+			Debug.Log (PlayerPrefs.GetString("nameScorePos"+i)+" "+PlayerPrefs.GetInt("highscorePos"+i));
 		}
+
+
+
 
 	}
 	

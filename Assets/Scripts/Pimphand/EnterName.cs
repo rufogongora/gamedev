@@ -11,9 +11,18 @@ public class EnterName : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		int [] testArr = new int [5];
+		int [] testArr2;
 		nameEntered = false;
 		nameText = GetComponent<Text> ();
 		Debug.Log (PlayerPrefs.GetInt ("highscore"));
+
+		testArr2 = PlayerPrefsX.GetIntArray ("testInts");
+
+		for (int i = 0; i < 5; i++) {
+			Debug.Log(testArr2[i]);
+		}
+
 	}
 	
 	// Update is called once per frame

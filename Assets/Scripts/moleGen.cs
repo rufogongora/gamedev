@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class moleGen : MonoBehaviour {
@@ -13,8 +14,12 @@ public class moleGen : MonoBehaviour {
 	public int spawnRange;
 
 
-	//public moleList theList;
+	public float gameTime = 60f;
+
+	public Text ScoreBoard;
+	public Text timeLeft;
 	
+
 	//variables to hold spot of spawn and check if spot is taken
 	static public bool[] spawnPoint = new bool[9];
 	public Vector3[] spawnSpot = new Vector3[9];
@@ -79,6 +84,8 @@ public class moleGen : MonoBehaviour {
 	void CheckMoleSpawn(){
 		timer += Time.deltaTime;
 		if (timer > nextSpawnTime) {
+			int spawnRate = Random.Range(1, 3);
+
 			SpawnMoles ();
 			timer =0.0f;
 			nextSpawnTime = Random.Range(minSpawnTime, maxSpawnTime);
@@ -98,11 +105,30 @@ public class moleGen : MonoBehaviour {
 	
 	}
 
+	void gameBoard(){
+
+		gameTime -= Time.deltaTime;
+
+		if (gameTime > 10) {
+			timeLeft.color = Color.green;
+		
+		} else {
+			timeLeft.color = Color.red;
+
+		}
+		ScoreBoard.text = "Score: ";
+		timeLeft.text = "Time: " + (int)gameTime;
+	
+
+
+	}
+
 	// Update is called once per frame
 	void Update () {
 
 		LowerMaxSpawn ();
-		CheckMoleSpawn ();	
+		CheckMoleSpawn ();
+		gameBoard ();
 	}
 
 }

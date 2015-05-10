@@ -12,6 +12,7 @@ public class SlapDetect : MonoBehaviour {
 	public AudioClip[] insult;				//Store the voices that insult the user
 	public AudioClip hit;
 	public AudioClip slowHit;
+	public AudioClip newRecord;
 	public AudioClip explode; 
 	AudioSource audio;
 	bool soundPlayed;
@@ -97,6 +98,12 @@ public class SlapDetect : MonoBehaviour {
 	public void explosion(bool landed){
 		if (landed)
 			audio.PlayOneShot (explode);
+	}
+	
+	//Play explosion
+	public void smashBros(bool landed){
+		if (landed)
+			audio.PlayOneShot (newRecord);
 	}
 	
 

@@ -110,6 +110,7 @@ public class floorCollision : MonoBehaviour {
 
 		if (newHighscore){
 			slapText.wordScore = "New Highscore!: "+score;
+			slap.smashBros(landed);
 			StartCoroutine(StartLoader());
 		}
 	}

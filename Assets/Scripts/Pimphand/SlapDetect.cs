@@ -21,7 +21,6 @@ public class SlapDetect : MonoBehaviour {
 
 
 	//Class objects to access the text on screen
-	public HighscoreText scoreText;			//Access the text that shows the highscore
 	public SlapText speedText;				//Access the text that shows how fast they slapped
 	public floorCollision fc; 				//Access the floorCollision class
 	public int score;						//Holds the score for the user
@@ -99,15 +98,7 @@ public class SlapDetect : MonoBehaviour {
 		if (landed)
 			audio.PlayOneShot (explode);
 	}
-
-	//Update the user highscore on screen
-	bool HighScore(){
-		if (score > PlayerPrefs.GetInt ("highscore")) {
-			PlayerPrefs.SetInt("highscore", score);
-			return true;
-		}
-		return false;
-	}
+	
 
 	//Spawn a robot upon promping with a gesture
 	public void spawnRobot(){
@@ -216,8 +207,8 @@ public class SlapDetect : MonoBehaviour {
 			if (position.y > 220 && position.x > 160){
 				if(gesture.Type == Gesture.GestureType.TYPESCREENTAP){
 						//load main menu here
-						Debug.Log ("detected");
-
+					Application.LoadLevel("Menu");
+					
 				}
 			}
 		}

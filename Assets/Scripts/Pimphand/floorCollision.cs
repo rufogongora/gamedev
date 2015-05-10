@@ -2,7 +2,6 @@
 using System.Collections;
 
 public class floorCollision : MonoBehaviour {
-	public HighscoreText scoreText;
 	public SlapText slapText;
 	public SlapDetect slap;
 	public float robotSpeed;
@@ -23,15 +22,19 @@ public class floorCollision : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		currentHighscore = PlayerPrefs.GetInt ("highscore");
 		robotSpeed = slap.robotSpeed;
 	}
 
 
+	IEnumerator StartLoader () 
+	{
+		yield return new WaitForSeconds(3);
+		Application.LoadLevel("pimpScore");
+	}
+	
 	bool HighScore(){
-		if (score > PlayerPrefs.GetInt ("highscore")) {
+		if (score > PlayerPrefs.GetInt ("highscorePos5")) {
 			PlayerPrefs.SetInt("highscore", (int)slap.deltaDistance.x*(-1));
-			scoreText.highScore = "Highscore: "+PlayerPrefs.GetInt ("highscore").ToString();
 			return true;
 		}
 		return false;
@@ -93,15 +96,21 @@ public class floorCollision : MonoBehaviour {
 			slapText.wordScore = "HAHAHAHA SO BAD: "+score;
 		}
 
-		if (newHighscore){
-			slapText.wordScore = "New Highscore!: "+score;
-		}
-		
+
+
 		//Set the robot back to his original point of whatever and stuff
 		slap.restart = true;
 		landed = true;
 		mcamera.enabled = true;
 		rcamera.enabled = false;
 		slap.explosion (landed);
+		slap.pos = 0;
+		
+		
+
+		if (newHighscore){
+			slapText.wordScore = "New Highscore!: "+score;
+			StartCoroutine(StartLoader());
+		}
 	}
 }

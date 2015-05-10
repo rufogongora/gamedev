@@ -6,6 +6,9 @@ public class WhackedMole : MonoBehaviour {
 
 	public float killMeTime;
 
+	public AudioClip moleHit;
+	AudioSource audio;
+
 	public int position{ set; get; }
 
 
@@ -13,18 +16,16 @@ public class WhackedMole : MonoBehaviour {
 
 	// start the timer for mole death
 	void Start () {
-
+		audio = GetComponent<AudioSource>();
 		timer = 0f;
 
 	}
 
 	void KillMe(){
-
-		//GetComponent<moleGen> ().spawnPoint [(int)position] = false;
-		//spawnPoint [position] = false;
-		//moleGen moleBool = GetComponent<moleGen> ();
 		moleGen.spawnPoint [position] = false;
 		Destroy (gameObject);
+		audio.PlayOneShot (moleHit);
+
 	}
 	
 	// Update is called once per frame

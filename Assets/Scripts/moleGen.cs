@@ -14,6 +14,8 @@ public class moleGen : MonoBehaviour {
 	public int spawnRange;
 
 
+
+
 	public float gameTime = 60f;
 
 	public Text ScoreBoard;
@@ -65,7 +67,6 @@ public class moleGen : MonoBehaviour {
 
 			GameObject go = (GameObject)Instantiate (moles);
 			go.transform.position = spawnSpot[spawnRange];
-			//theList.InsertIntoList (go);
 
 			spawnPoint[spawnRange]=true;
 		}

@@ -18,13 +18,17 @@ public class EnterName : MonoBehaviour {
 		nameText = GetComponent<Text> ();
 		score = PlayerPrefs.GetInt ("highscore");
 
+
+		for (int i=1; i<=5; i++) {
+			Debug.Log ("before "+PlayerPrefs.GetString ("nameScorePos" + i) + " " + PlayerPrefs.GetInt ("highscorePos" + i));
+		}
+
 	}
 
 	// Update is called once per frame
 	void Update () {
 		if (nameEntered) {
 			namepls ();
-
 			Application.LoadLevel("Pimphand");
 		}
 	}
@@ -35,18 +39,21 @@ public class EnterName : MonoBehaviour {
 			string tempstring = "";
 			for (int i=1; i<=5; i++) {
 				if (PlayerPrefs.GetInt ("highscorePos" + i) < score) {
-					tempint = PlayerPrefs.GetInt ("highscorePos" + i);  
+					tempint = PlayerPrefs.GetInt ("highscorePos" + i); 	
+					Debug.Log (i+" "+tempint);
 					tempstring = PlayerPrefs.GetString ("nameScorePos" + i); 
+					Debug.Log (i+" "+tempstring);
 					PlayerPrefs.SetInt ("highscorePos" + i, score); 
 					PlayerPrefs.SetString ("nameScorePos" + i, changeName);
 					if (i < 5) {
 						int j = i + 1;
 						score = PlayerPrefs.GetInt ("highscorePos" + j);
+						changeName = PlayerPrefs.GetString ("nameScorePos" + j);
 						PlayerPrefs.SetInt ("highscorePos" + j, tempint); 
 						PlayerPrefs.SetString ("nameScorePos" + j, tempstring); 
 					}
 				}
-				Debug.Log (PlayerPrefs.GetString ("nameScorePos" + i) + " " + PlayerPrefs.GetInt ("highscorePos" + i));
+				Debug.Log ("after "+PlayerPrefs.GetString ("nameScorePos" + i) + " " + PlayerPrefs.GetInt ("highscorePos" + i));
 			}
 			updated=true;
 		}

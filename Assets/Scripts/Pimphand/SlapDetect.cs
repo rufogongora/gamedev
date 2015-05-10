@@ -207,8 +207,8 @@ public class SlapDetect : MonoBehaviour {
 			if (position.y > 220 && position.x > 160){
 				if(gesture.Type == Gesture.GestureType.TYPESCREENTAP){
 						//load main menu here
-						Debug.Log ("detected");
-
+					Application.LoadLevel("Menu");
+					
 				}
 			}
 		}

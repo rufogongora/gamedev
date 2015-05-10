@@ -104,6 +104,7 @@ public class floorCollision : MonoBehaviour {
 		mcamera.enabled = true;
 		rcamera.enabled = false;
 		slap.explosion (landed);
+		slap.pos = 0;
 		
 		
 

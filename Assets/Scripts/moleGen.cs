@@ -5,6 +5,7 @@ using System.Collections;
 public class moleGen : MonoBehaviour {
 
 	public GameObject moles;
+	public GameObject moleHills;
 
 	public float timer = 0.0f;
 
@@ -36,6 +37,7 @@ public class moleGen : MonoBehaviour {
 		nextSpawnTime = Random.Range (minSpawnTime, maxSpawnTime);
 
 		spawnPointGeneration ();
+		FixedMoleSpawn ();
 
 		decreaseMaxSpawnTimer = 0f;
 	}
@@ -48,11 +50,22 @@ public class moleGen : MonoBehaviour {
 		{
 			for(int j = 0; j < 3; j++)
 			{
-				spawnSpot[counter] = new Vector3(i*2 -2f, 2.5f, j*2 -2f);
+				spawnSpot[counter] = new Vector3(i*2 -2f, 0f, j*2 -2f);
 				counter++;	
 			}
 		}
 
+	}
+
+	void FixedMoleSpawn(){
+		foreach (Vector3 MoleVector in spawnSpot) {
+			GameObject go = (GameObject)Instantiate (moles);
+			go.transform.position = MoleVector;
+
+			GameObject goH = (GameObject)Instantiate (moleHills);
+			goH.transform.position = MoleVector;
+		
+		}
 	}
 
 
@@ -126,9 +139,12 @@ public class moleGen : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+		if (gameTime < 0) {
+			Debug.Log("game over");
+		}
 
-		LowerMaxSpawn ();
-		CheckMoleSpawn ();
+		//LowerMaxSpawn ();
+		//CheckMoleSpawn ();
 		gameBoard ();
 	}
 

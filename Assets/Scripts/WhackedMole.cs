@@ -22,11 +22,6 @@ public class WhackedMole : MonoBehaviour {
 	void KillMe(){
 		moleGen.spawnPoint [position] = false;
 		Destroy (gameObject);
-<<<<<<< HEAD
-
-
-=======
->>>>>>> origin/master
 	}
 	
 	// Update is called once per frame

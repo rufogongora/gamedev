@@ -4,7 +4,7 @@ using Leap;
 
 public class WhackedMole : MonoBehaviour {
 
-	public float killMeTime;
+	public float killMeTime=3f;
 
 	public AudioClip moleHit;
 	AudioSource audio; 
@@ -22,19 +22,27 @@ public class WhackedMole : MonoBehaviour {
 	void KillMe(){
 		moleGen.spawnPoint [position] = false;
 		Destroy (gameObject);
+<<<<<<< HEAD
+
+
+=======
+>>>>>>> origin/master
 	}
 	
 	// Update is called once per frame
 	void Update () {
 	timer += Time.deltaTime;
 	if (timer >= killMeTime) {
-		//KillMe();
+		KillMe();
 	}
 	
 	}
 
 	void OnCollisionEnter(Collision collision){
 		//If the robot collides with the hand
+
+		audio.PlayOneShot (moleHit);
+
 		if (collision.gameObject.name == "palm"||collision.gameObject.name  == 
 		    "bone1"||collision.gameObject.name == "bone2" ||collision.gameObject.name == "bone3"){
 

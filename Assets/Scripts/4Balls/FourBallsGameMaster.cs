@@ -8,6 +8,8 @@ public class FourBallsGameMaster : MonoBehaviour {
 	public Text scoreText;
 	public Text timeText;
 	public Text gameOver;
+	public AudioClip hit; 
+	AudioSource audio;
 	int score;
 	public float time;
 	bool gOver;
@@ -16,8 +18,13 @@ public class FourBallsGameMaster : MonoBehaviour {
 		score = 0;
 		InvokeRepeating ("generateBalls", 0f, 5f);
 		gOver = false;
+		audio = GetComponent<AudioSource>();
 	}
 
+	public void soundScore(){
+		audio.PlayOneShot(hit);
+	}
+	
 	public void ScoreUp()
 	{
 		//if game over then do nothing

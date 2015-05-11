@@ -16,9 +16,11 @@ public class moleGen : MonoBehaviour {
 
 
 	public float gameTime = 60f;
+	public float gameScore = 0f;
 
 	public Text ScoreBoard;
 	public Text timeLeft;
+	public Text OverGame;
 	
 
 	//variables to hold spot of spawn and check if spot is taken
@@ -118,6 +120,10 @@ public class moleGen : MonoBehaviour {
 	
 	}
 
+	public void UpGameScore(){
+		gameScore += 1f;
+	}
+
 	void gameBoard(){
 
 		gameTime -= Time.deltaTime;
@@ -129,9 +135,10 @@ public class moleGen : MonoBehaviour {
 			timeLeft.color = Color.red;
 
 		} else {
+			OverGame.text = "GAME OVER";
 			GameOver();
 		}
-		ScoreBoard.text = "Score: ";
+		ScoreBoard.text = "Score: "+ (int)gameScore;
 		timeLeft.text = "Time: " + (int)gameTime;
 	
 
@@ -140,6 +147,8 @@ public class moleGen : MonoBehaviour {
 
 	IEnumerator GameOver() {
 		yield return new WaitForSeconds(3);
+
+		Time.timeScale = 0;
 		//EXIT THE GAME HERE:
 		Application.LoadLevel ("Menu");
 	}
@@ -149,6 +158,8 @@ public class moleGen : MonoBehaviour {
 		if (gameTime < 0) {
 			Debug.Log("game over");
 		}
+
+		UpGameScore ();
 
 		//LowerMaxSpawn ();
 		//CheckMoleSpawn ();

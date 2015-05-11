@@ -15,8 +15,6 @@ public class moleGen : MonoBehaviour {
 	public int spawnRange;
 
 
-
-
 	public float gameTime = 60f;
 
 	public Text ScoreBoard;
@@ -36,21 +34,21 @@ public class moleGen : MonoBehaviour {
 		//
 		nextSpawnTime = Random.Range (minSpawnTime, maxSpawnTime);
 
-		spawnPointGeneration ();
+		GenerateSpawnPoint ();
 		FixedMoleSpawn ();
 
 		decreaseMaxSpawnTimer = 0f;
 	}
 
 	//initialize the points where moles can spawn
-	void spawnPointGeneration(){
+	void GenerateSpawnPoint(){
 
 		int counter = 0;
 		for (int i = 0; i < 3; i++) 
 		{
 			for(int j = 0; j < 3; j++)
 			{
-				spawnSpot[counter] = new Vector3(i*2 -2f, 0f, j*2 -2f);
+				spawnSpot[counter] = new Vector3(i*2 -2f, -0.6f, j*2 -2f);
 				counter++;	
 			}
 		}
@@ -58,12 +56,13 @@ public class moleGen : MonoBehaviour {
 	}
 
 	void FixedMoleSpawn(){
-		foreach (Vector3 MoleVector in spawnSpot) {
-			GameObject go = (GameObject)Instantiate (moles);
-			go.transform.position = MoleVector;
 
-			GameObject goH = (GameObject)Instantiate (moleHills);
-			goH.transform.position = MoleVector;
+		foreach (Vector3 MoleVector in spawnSpot) {
+			GameObject moleSpawn = (GameObject)Instantiate (moles);
+			moleSpawn.transform.position = MoleVector;
+
+			GameObject hillSpawn = (GameObject)Instantiate (moleHills);
+			hillSpawn.transform.position = MoleVector+ new Vector3(0f, 0.6f,0f);
 		
 		}
 	}
@@ -126,15 +125,23 @@ public class moleGen : MonoBehaviour {
 		if (gameTime > 10) {
 			timeLeft.color = Color.green;
 		
-		} else {
+		} else if (gameTime < 10 && gameTime > 0) {
 			timeLeft.color = Color.red;
 
+		} else {
+			GameOver();
 		}
 		ScoreBoard.text = "Score: ";
 		timeLeft.text = "Time: " + (int)gameTime;
 	
 
 
+	}
+
+	IEnumerator GameOver() {
+		yield return new WaitForSeconds(3);
+		//EXIT THE GAME HERE:
+		Application.LoadLevel ("Menu");
 	}
 
 	// Update is called once per frame

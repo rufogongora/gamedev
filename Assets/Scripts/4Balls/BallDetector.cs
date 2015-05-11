@@ -16,6 +16,7 @@ public class BallDetector : MonoBehaviour {
 
 		//correct color
 		if (other.transform.CompareTag (colorBall)) {
+			gameMaster.soundScore();
 			gameMaster.ScoreUp();
 		}
 		else {

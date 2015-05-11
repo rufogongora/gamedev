@@ -14,6 +14,7 @@ public class SlapDetect : MonoBehaviour {
 	public AudioClip slowHit;
 	public AudioClip newRecord;
 	public AudioClip explode; 
+	public AudioClip momAudio;
 	AudioSource audio;
 	bool soundPlayed;
 	bool startGame; 
@@ -52,7 +53,7 @@ public class SlapDetect : MonoBehaviour {
 		soundPlayed = false;
 		restart = true;
 		startGame = false;
-		//PlayerPrefs.DeleteAll ();
+		PlayerPrefs.DeleteAll ();
 		spawnpoint = new Vector3(414.25f, 153.93f, -35.25f);
 		initialDistance = gameObject.GetComponent<Rigidbody> ().position;
 		//Set the variables
@@ -100,10 +101,17 @@ public class SlapDetect : MonoBehaviour {
 			audio.PlayOneShot (explode);
 	}
 	
-	//Play explosion
+	//Play smash bros audio clip
 	public void smashBros(bool landed){
 		if (landed)
 			audio.PlayOneShot (newRecord);
+	}
+
+
+	//Play mlg clip
+	public void momCamera(bool landed){
+		if (landed)
+			audio.PlayOneShot (momAudio);
 	}
 	
 

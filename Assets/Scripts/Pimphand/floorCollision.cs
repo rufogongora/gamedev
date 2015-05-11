@@ -31,6 +31,23 @@ public class floorCollision : MonoBehaviour {
 		yield return new WaitForSeconds(3);
 		Application.LoadLevel("pimpScore");
 	}
+
+
+	IEnumerator numberOneLoader () 
+	{
+		slapText.speedText.color = Color.cyan;
+		for (int i=0; i<12; i++) {
+			if (i%2==0){
+				yield return new WaitForSeconds(1);
+				slapText.speedText.color = Color.cyan;
+			}
+			else{
+				yield return new WaitForSeconds(1);
+				slapText.speedText.color = Color.green;	
+			}
+		}
+		Application.LoadLevel("pimpScore");
+	}
 	
 	bool HighScore(){
 		if (score > PlayerPrefs.GetInt ("highscorePos5")) {
@@ -72,7 +89,7 @@ public class floorCollision : MonoBehaviour {
 			slapText.wordScore = "Chris Brown would be proud: "+score;
 		}
 		if (score > 4000 && landed == false){
-			slapText.wordScore = "Mayweather, is that you?: "+score;
+			slapText.wordScore = "Mayweather, that's not your girlfriend: "+score;
 		}
 		if (score > 5000 && landed == false){
 			slapText.wordScore = "You Rodney King'd him!: "+score;
@@ -109,9 +126,16 @@ public class floorCollision : MonoBehaviour {
 		
 
 		if (newHighscore){
-			slapText.wordScore = "New Highscore!: "+score;
-			slap.smashBros(landed);
-			StartCoroutine(StartLoader());
+			if (score > PlayerPrefs.GetInt ("highscorePos5")){
+				slapText.wordScore = "OVERALL HIGHSCORE!!!!!!!: "+score;
+				slap.momCamera(landed);
+				StartCoroutine(numberOneLoader());
+			}
+			else{
+				slapText.wordScore = "New Highscore!: "+score;
+				slap.smashBros(landed);
+				StartCoroutine(StartLoader());
+			}
 		}
 	}
 }

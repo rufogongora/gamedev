@@ -8,7 +8,7 @@ public class score2 : MonoBehaviour {
 	public Text hsText;
 	// Use this for initialization
 	void Start () {
-		highScore = PlayerPrefs.GetString ("nameScorePos2")+": " + PlayerPrefs.GetInt ("highscorePos2");
+		highScore ="2: "+ PlayerPrefs.GetString ("nameScorePos2")+": " + PlayerPrefs.GetInt ("highscorePos2");
 		hsText = GetComponent<Text> ();
 	}
 	

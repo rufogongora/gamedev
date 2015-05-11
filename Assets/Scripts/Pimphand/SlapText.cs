@@ -9,7 +9,7 @@ public class SlapText : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		wordScore = "Slap the sandbag as far as you can";
+		wordScore = "Read instructions to the right";
 		speedText = GetComponent <Text> ();
 	}
 	

@@ -71,7 +71,7 @@ public class WhackedMole : MonoBehaviour {
 		if (collision.gameObject.name == "palm"||collision.gameObject.name  == 
 		    "bone1"||collision.gameObject.name == "bone2" ||collision.gameObject.name == "bone3"){
 			//if the mole is up, you can hit the mole 
-			if(moleGen.spawnPoint[position]){
+			if(moleGen.spawnPoint[position]==true){
 				Debug.Log ("hit mole");
 				//you have hit the mole and now want to move it down
 				//set the condition to false as you want it to move down

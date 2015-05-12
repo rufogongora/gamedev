@@ -159,8 +159,6 @@ public class moleGen : MonoBehaviour {
 			Debug.Log("game over");
 		}
 
-		UpGameScore ();
-
 		//LowerMaxSpawn ();
 		//CheckMoleSpawn ();
 		gameBoard ();

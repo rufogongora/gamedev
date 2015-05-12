@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 
-public class high : MonoBehaviour {
+public class highScores : MonoBehaviour {
 	
 	public Text nameText;
 	public string changeName;
@@ -16,20 +16,14 @@ public class high : MonoBehaviour {
 		updated = false;
 		nameEntered = false;
 		nameText = GetComponent<Text> ();
-		score = PlayerPrefs.GetInt ("highscore");
-		
-		
-		for (int i=1; i<=5; i++) {
-			Debug.Log ("before "+PlayerPrefs.GetString ("nameScorePos" + i) + " " + PlayerPrefs.GetInt ("highscorePos" + i));
-		}
-		
+		score = PlayerPrefs.GetInt ("highball");
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		if (nameEntered) {
 			namepls ();
-			Application.LoadLevel("Pimphand");
+			Application.LoadLevel("Menu");
 		}
 	}
 	
@@ -38,22 +32,20 @@ public class high : MonoBehaviour {
 			int tempint = 0;
 			string tempstring = "";
 			for (int i=1; i<=5; i++) {
-				if (PlayerPrefs.GetInt ("highscorePos" + i) < score) {
-					tempint = PlayerPrefs.GetInt ("highscorePos" + i); 	
-					Debug.Log (i+" "+tempint);
-					tempstring = PlayerPrefs.GetString ("nameScorePos" + i); 
-					Debug.Log (i+" "+tempstring);
-					PlayerPrefs.SetInt ("highscorePos" + i, score); 
-					PlayerPrefs.SetString ("nameScorePos" + i, changeName);
+				if (PlayerPrefs.GetInt ("highballPos" + i) < score) {
+					tempint = PlayerPrefs.GetInt ("highballPos" + i); 	
+					tempstring = PlayerPrefs.GetString ("nameballPos" + i); 
+					PlayerPrefs.SetInt ("highballPos" + i, score); 
+					PlayerPrefs.SetString ("nameballPos" + i, changeName);
 					if (i < 5) {
 						int j = i + 1;
-						score = PlayerPrefs.GetInt ("highscorePos" + j);
-						changeName = PlayerPrefs.GetString ("nameScorePos" + j);
-						PlayerPrefs.SetInt ("highscorePos" + j, tempint); 
-						PlayerPrefs.SetString ("nameScorePos" + j, tempstring); 
+						score = PlayerPrefs.GetInt ("highballPos" + j);
+						changeName = PlayerPrefs.GetString ("nameballPos" + j);
+						PlayerPrefs.SetInt ("highballPos" + j, tempint); 
+						PlayerPrefs.SetString ("nameballPos" + j, tempstring); 
 					}
 				}
-				Debug.Log ("after "+PlayerPrefs.GetString ("nameScorePos" + i) + " " + PlayerPrefs.GetInt ("highscorePos" + i));
+				Debug.Log ("after "+PlayerPrefs.GetString ("nameballPos" + i) + " " + PlayerPrefs.GetInt ("highballPos" + i));
 			}
 			updated=true;
 		}
@@ -67,3 +59,4 @@ public class high : MonoBehaviour {
 	}
 	
 }
+

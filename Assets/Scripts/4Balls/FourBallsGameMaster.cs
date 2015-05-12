@@ -9,6 +9,8 @@ public class FourBallsGameMaster : MonoBehaviour {
 	public Text timeText;
 	public Text gameOver;
 	public AudioClip hit; 
+	public AudioClip topScore; 
+	public AudioClip highscore; 
 	AudioSource audio;
 	int score;
 	public float time;
@@ -23,6 +25,14 @@ public class FourBallsGameMaster : MonoBehaviour {
 
 	public void soundScore(){
 		audio.PlayOneShot(hit);
+	}
+
+	public void numberOne(){
+		audio.PlayOneShot(topScore);
+	}
+
+	public void highScored(){
+		audio.PlayOneShot(highscore);
 	}
 	
 	public void ScoreUp()
@@ -68,6 +78,29 @@ public class FourBallsGameMaster : MonoBehaviour {
 		Application.LoadLevel ("Menu");
 	}
 
+	IEnumerator newScore() {
+		yield return new WaitForSeconds(3);
+		//EXIT THE GAME HERE:
+		Application.LoadLevel ("4BallsHighscore");
+	}
+
+	IEnumerator overallScore() {
+		yield return new WaitForSeconds(3);
+		//EXIT THE GAME HERE:
+		gameOver.color = Color.cyan;
+		for (int i = 0; i<12; i++) {
+			if (i%2==0){
+				gameOver.color = Color.cyan;
+				yield return new WaitForSeconds(1);
+			}
+			else{
+				gameOver.color = Color.green;
+				yield return new WaitForSeconds(1);
+			}
+		}
+		Application.LoadLevel ("4BallsHighscore");
+	}
+
 	// Update is called once per frame
 	void Update () {
 		//decrease time
@@ -82,15 +115,33 @@ public class FourBallsGameMaster : MonoBehaviour {
 
 		scoreText.text = "Balls: " + score.ToString ();
 		timeText.text = "Time Left: " + (int)time;
+		PlayerPrefs.SetInt("highball", score);
 
 		if (time <= 0) {
 			//game over
 			if (!gameOver.enabled)
 			{
 				gameOver.enabled = true;
-				gameOver.text += "\n Balls: " + score;
-				StartCoroutine("GameOver");
-				gOver = true;
+				if (score > PlayerPrefs.GetInt("scoreballPos5")){
+					if (score > PlayerPrefs.GetInt("scoreballPos1")){
+						gameOver.color = Color.cyan;
+						numberOne();
+						gameOver.text = "Overall Highscore!!!";
+						gameOver.text += "\n Balls: " + score;
+						StartCoroutine("overallScore");
+					}
+					else{
+						highScored();
+						gameOver.text = "New Highscore!";
+						gameOver.text += "\n Balls: " + score;
+						StartCoroutine("newScore");
+					}
+				}
+				else{
+					gameOver.text += "\n Balls: " + score;
+					//StartCoroutine("GameOver");
+					gOver = true;
+				}
 			}
 			
 		}

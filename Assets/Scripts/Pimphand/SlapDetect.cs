@@ -15,6 +15,7 @@ public class SlapDetect : MonoBehaviour {
 	public AudioClip newRecord;				//Stores the sound for a new highscore
 	public AudioClip explode; 				//Stores the sound for when the sandbag lands
 	public AudioClip momAudio;				//Stores the sound for setting the overall highscore
+	public AudioClip kidAudio;				//Stores the sound for setting the overall highscore
 	AudioSource audio;						//Variable to play audio in the game
 	bool soundPlayed;						//Variable to avoid playing a sound multiple times on hand collision detection
 	bool startGame; 						//Variable to do specific things only when the game starts
@@ -136,7 +137,7 @@ public class SlapDetect : MonoBehaviour {
 			//Get velocity and position of the hand in the current frame
 			Vector velocity = hand.PalmVelocity;
 			Vector position = hand.PalmPosition;
-			
+
 			
 			//Get the speed of the hand and it's position
 			speed = (int)velocity.x;
@@ -187,8 +188,10 @@ public class SlapDetect : MonoBehaviour {
 
 	//Play smlg clip when the user gets the overall highscore
 	public void momCamera(bool landed){
-		if (landed)
+		if (landed) {
 			audio.PlayOneShot (momAudio);
+			audio.PlayOneShot (kidAudio);
+		}
 	}
 	
 

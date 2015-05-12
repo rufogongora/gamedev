@@ -38,9 +38,7 @@ public class EnterName : MonoBehaviour {
 		score = PlayerPrefs.GetInt ("highscore");	//Get the score from the last session
 
 		DownloadHighscores();
-
-		DeleteHighscore ("Mary");
-
+		StartCoroutine(delExtras ());
 	}
 
 
@@ -49,49 +47,27 @@ public class EnterName : MonoBehaviour {
 		//If the user entered their name they are ready to go back to playing, put their score in the table and send them back
 		if (nameEntered) {
 			AddNewHighscore(changeName, score);
-			//namepls ();
-			//Application.LoadLevel("Pimphand");
-		}
-
-		DeleteHighscore ("Mary");
-
-		for (int i = 0; i<highscoresList.Length; i++) {
-			print (highscoresList[i].username + ": " + highscoresList[i].score);
+			Application.LoadLevel("Pimphand");
 		}
 	}
 
 	void highScores(){
-			
+
 	}
 
-
-	/*Takes the user's name and their record setting score from last session and puts them in the table. 
-	 It puts them in the correct section and kicks out the lowest guy (Sorry #5). Names and scores 
-	 are stored in two different session keys. After its done, it sets the updated variable to true so the score doesn't 
-	 keep shifting down */
-	void namepls(){
-		if (!updated) {
-			int tempint = 0;
-			string tempstring = "";
-			for (int i=1; i<=5; i++) {
-				if (PlayerPrefs.GetInt ("highscorePos" + i) < score) {
-					tempint = PlayerPrefs.GetInt ("highscorePos" + i); 	
-					Debug.Log (i+" "+tempint);
-					tempstring = PlayerPrefs.GetString ("nameScorePos" + i); 
-					Debug.Log (i+" "+tempstring);
-					PlayerPrefs.SetInt ("highscorePos" + i, score); 
-					PlayerPrefs.SetString ("nameScorePos" + i, changeName);
-					if (i < 5) {
-						int j = i + 1;
-						score = PlayerPrefs.GetInt ("highscorePos" + j);
-						changeName = PlayerPrefs.GetString ("nameScorePos" + j);
-						PlayerPrefs.SetInt ("highscorePos" + j, tempint); 
-						PlayerPrefs.SetString ("nameScorePos" + j, tempstring); 
-					}
-				}
-			}
-			updated=true;
+	//Only the top 5 make it, rest is wasted space
+	void excess(){
+		for (int i = 5; i<highscoresList.Length; i++) {
+			Debug.Log (highscoresList[i].username);
+			DelHighscore(highscoresList[i].username);
 		}
+	}
+
+	//To let the player bask in their glory
+	IEnumerator delExtras () 
+	{
+		yield return new WaitForSeconds(3);
+		excess ();
 	}
 
 	/*When the user hits enter, they are done typing their name in
@@ -106,6 +82,10 @@ public class EnterName : MonoBehaviour {
 
 	public void AddNewHighscore(string username, int score) {
 		StartCoroutine(UploadNewHighscore(username,score));
+	}
+
+	public void DelHighscore(string username) {
+		StartCoroutine(DeleteHighscore(username));
 	}
 	
 	IEnumerator UploadNewHighscore(string username, int score3) {

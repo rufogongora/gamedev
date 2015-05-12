@@ -1,5 +1,6 @@
 ﻿//Dreamlo private key: 3sq5NJ4XDEGz6aSyjRKqVAQx4D2dFq4kioLxF3-y4JiA
 //Dreamlo public key: 5551a3c46e51b61a1cf919aa
+
 using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
@@ -34,8 +35,7 @@ public class highScores : MonoBehaviour {
 		updated = false;							//Score hasn't been shifted yet
 		nameEntered = false;						//Name hasn't been entered yet
 		nameText = GetComponent<Text> ();			//Get access to text component
-		score = PlayerPrefs.GetInt ("highscore");	//Get the score from the last session
-		
+		score = PlayerPrefs.GetInt ("highball");
 		DownloadHighscores();
 		StartCoroutine(delExtras ());
 	}
@@ -46,9 +46,10 @@ public class highScores : MonoBehaviour {
 		//If the user entered their name they are ready to go back to playing, put their score in the table and send them back
 		if (nameEntered) {
 			AddNewHighscore(changeName, score);
-			Application.LoadLevel("Pimphand");
+			Application.LoadLevel("Menu");
 		}
 	}
+
 	
 	//Only the top 5 make it, rest is wasted space
 	void excess(){
@@ -128,7 +129,6 @@ public class highScores : MonoBehaviour {
 		for (int i = 0; i <entries.Length; i ++) {
 			string[] entryInfo = entries[i].Split(new char[] {'|'});
 			string username = entryInfo[0];
-			username = username.Replace("+", " ");
 			int score = int.Parse(entryInfo[1]);
 			this.highscoresList[i] = new Highscore(username,score);
 		}

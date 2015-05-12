@@ -2,37 +2,38 @@
 using System.Collections;
 
 public class floorCollision : MonoBehaviour {
-	public SlapText slapText;
-	public SlapDetect slap;
-	public float robotSpeed;
-	public int score;
-	public int currentHighscore;
-	public Camera mcamera;
-	public Camera rcamera;
-	public bool landed;
-
-	//clone robot
-	public Transform prefab;
+	public SlapText slapText;			//Access the class object for the main text
+	public SlapDetect slap;				//Access the class object for the slap detection
+	public float robotSpeed;			//Stores the speed of the sandbag
+	public int score;					//Stores the distance the sandbag has flown
+	public Camera mcamera;				//Access the camera for hitting the sandbag
+	public Camera rcamera;				//Access the camera that follows the sandbag
+	public bool landed;					//Stores the variable that says if the sandbag has landed or not
+		
 	
 	// Use this for initialization
 	void Start () {
+		//The object hasn't landed yet
 		landed = false;
+		//Get the highscore from the last session
 		score = PlayerPrefs.GetInt ("highscore");
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		//Update the speed of the sandbag
 		robotSpeed = slap.robotSpeed;
 	}
 
 
+	//To let the player bask in their glory
 	IEnumerator StartLoader () 
 	{
 		yield return new WaitForSeconds(3);
 		Application.LoadLevel("pimpScore");
 	}
 
-
+	//Give a longer delay and celebration for this achievement
 	IEnumerator numberOneLoader () 
 	{
 		slapText.speedText.color = Color.cyan;
@@ -48,7 +49,8 @@ public class floorCollision : MonoBehaviour {
 		}
 		Application.LoadLevel("pimpScore");
 	}
-	
+
+	//Returns if they made the highscorelist or not
 	bool HighScore(){
 		if (score > PlayerPrefs.GetInt ("highscorePos5")) {
 			PlayerPrefs.SetInt("highscore", (int)slap.deltaDistance.x*(-1));
@@ -57,6 +59,7 @@ public class floorCollision : MonoBehaviour {
 		return false;
 	}
 
+	//If the sandbag landed on the floor, set the score and text accordingly
 	void OnTriggerEnter(Collider other) {
 		bool newHighscore = false;
 		if (!landed) {
@@ -115,7 +118,7 @@ public class floorCollision : MonoBehaviour {
 
 
 
-		//Set the robot back to his original point of whatever and stuff
+		//Set the sandbag back to his original point of whatever and stuff
 		slap.restart = true;
 		landed = true;
 		mcamera.enabled = true;
@@ -124,14 +127,18 @@ public class floorCollision : MonoBehaviour {
 		slap.pos = 0;
 		
 		
-
+		//If a highscore was set, check the following
 		if (newHighscore){
+			//If its the overall highscore, go crazy
 			if (score > PlayerPrefs.GetInt ("highscorePos5")){
+				slap.restart = false;
 				slapText.wordScore = "OVERALL HIGHSCORE!!!!!!!: "+score;
 				slap.momCamera(landed);
 				StartCoroutine(numberOneLoader());
 			}
+			//Otherwise, go only slightly crazy
 			else{
+				slap.restart = false;
 				slapText.wordScore = "New Highscore!: "+score;
 				slap.smashBros(landed);
 				StartCoroutine(StartLoader());

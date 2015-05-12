@@ -122,8 +122,8 @@ public class FourBallsGameMaster : MonoBehaviour {
 			if (!gameOver.enabled)
 			{
 				gameOver.enabled = true;
-				if (score > PlayerPrefs.GetInt("scoreballPos5")){
-					if (score > PlayerPrefs.GetInt("scoreballPos1")){
+				if (score > PlayerPrefs.GetInt("highballPos5")){
+					if (score > PlayerPrefs.GetInt("highballPos1")){
 						gameOver.color = Color.cyan;
 						numberOne();
 						gameOver.text = "Overall Highscore!!!";

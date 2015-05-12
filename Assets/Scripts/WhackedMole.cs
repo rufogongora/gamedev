@@ -37,7 +37,7 @@ public class WhackedMole : MonoBehaviour {
 			moleGen.spawnPoint [position] = true;
 
 			//move the mole up to max height of 0f
-			if(transform.position.y <= 0){
+			if(transform.position.y < 0){
 				transform.position = transform.position + new Vector3 (0f, 0.4f, 0f);
 
 			}
@@ -47,7 +47,7 @@ public class WhackedMole : MonoBehaviour {
 		else {
 			Debug.Log("mole is up moving down");
 			moleGen.spawnPoint [position] = false;
-			if(transform.position.y >= -0.6f){
+			if(transform.position.y > -0.6f){
 				transform.position = transform.position - new Vector3 (0f, 0.4f, 0f);
 			}	
 		}
@@ -78,9 +78,15 @@ public class WhackedMole : MonoBehaviour {
 		    "bone1"||collision.gameObject.name == "bone2" ||collision.gameObject.name == "bone3"){
 			//if the mole is up, you can hit the mole 
 			if(moleGen.spawnPoint[position]==true){
-				Debug.Log ("hit mole");
+
 				//you have hit the mole and now want to move it down
 				//set the condition to false as you want it to move down
+
+				int pos = position;
+				//audio.PlayOneShot(moleHit);
+
+				Debug.Log ("hit mole at position: "+ pos);
+
 				moleGen.spawnPoint[position] = false;
 
 				UpScore();	

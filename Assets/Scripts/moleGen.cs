@@ -14,6 +14,10 @@ public class moleGen : MonoBehaviour {
 	public float nextSpawnTime;
 	public int spawnRange;
 
+	private bool gameOverMole;
+
+
+
 
 	public float gameTime = 60f;
 	public static float gameScore = 0f;
@@ -32,6 +36,9 @@ public class moleGen : MonoBehaviour {
 
 	// start the mole generator 
 	void Start () {
+
+		gameOverMole = false;
+		OverGame.text = "";
 
 		//
 		nextSpawnTime = Random.Range (minSpawnTime, maxSpawnTime);
@@ -123,6 +130,7 @@ public class moleGen : MonoBehaviour {
 	void gameBoard(){
 
 		gameTime -= Time.deltaTime;
+		ScoreBoard.color = Color.yellow;
 
 		if (gameTime > 10) {
 			timeLeft.color = Color.green;
@@ -131,8 +139,7 @@ public class moleGen : MonoBehaviour {
 			timeLeft.color = Color.red;
 
 		} else {
-			OverGame.text = "GAME OVER";
-			GameOver();
+			StartCoroutine("GameOver");
 		}
 		ScoreBoard.text = "Score: "+ (int)gameScore;
 		timeLeft.text = "Time: " + (int)gameTime;
@@ -142,9 +149,13 @@ public class moleGen : MonoBehaviour {
 	}
 
 	IEnumerator GameOver() {
+
+		OverGame.text = " Game over!";
+
 		yield return new WaitForSeconds(3);
 
-		Time.timeScale = 0;
+		gameOverMole = true;
+
 		//EXIT THE GAME HERE:
 		Application.LoadLevel ("Menu");
 	}
@@ -158,6 +169,7 @@ public class moleGen : MonoBehaviour {
 		//LowerMaxSpawn ();
 		//CheckMoleSpawn ();
 		gameBoard ();
+	
 	}
 
 }

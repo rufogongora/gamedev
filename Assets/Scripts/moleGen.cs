@@ -16,7 +16,7 @@ public class moleGen : MonoBehaviour {
 
 
 	public float gameTime = 60f;
-	public float gameScore = 0f;
+	public static float gameScore = 0f;
 
 	public Text ScoreBoard;
 	public Text timeLeft;
@@ -118,10 +118,6 @@ public class moleGen : MonoBehaviour {
 			}
 		}
 	
-	}
-
-	public void UpGameScore(){
-		gameScore += 1f;
 	}
 
 	void gameBoard(){

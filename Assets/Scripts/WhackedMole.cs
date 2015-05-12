@@ -20,7 +20,7 @@ public class WhackedMole : MonoBehaviour {
 
 	// start the timer for mole death
 	void Start () {
-
+		audio = GetComponent<AudioSource>();
 		UpTimeMole = Random.Range (3, 8);
 		DownTimeMole = Random.Range (5, 15);
 		UpTimer = 0f;
@@ -38,7 +38,7 @@ public class WhackedMole : MonoBehaviour {
 
 			//move the mole up to max height of 0f
 			if(transform.position.y < 0){
-				transform.position = transform.position + new Vector3 (0f, 0.4f, 0f);
+				transform.position = transform.position + new Vector3 (0f, 0.6f, 0f);
 
 			}
 
@@ -48,7 +48,7 @@ public class WhackedMole : MonoBehaviour {
 			Debug.Log("mole is up moving down");
 			moleGen.spawnPoint [position] = false;
 			if(transform.position.y > -0.6f){
-				transform.position = transform.position - new Vector3 (0f, 0.4f, 0f);
+				transform.position = transform.position - new Vector3 (0f, 0.6f, 0f);
 			}	
 		}
 
@@ -83,7 +83,8 @@ public class WhackedMole : MonoBehaviour {
 				//set the condition to false as you want it to move down
 
 				int pos = position;
-				//audio.PlayOneShot(moleHit);
+
+				audio.PlayOneShot(moleHit);
 
 				Debug.Log ("hit mole at position: "+ pos);
 

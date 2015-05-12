@@ -14,6 +14,7 @@ public class moleGen : MonoBehaviour {
 	public float nextSpawnTime;
 	public int spawnRange;
 
+
 	private bool gameOverMole;
 
 

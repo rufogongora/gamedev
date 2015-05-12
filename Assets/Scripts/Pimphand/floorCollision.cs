@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿//Dreamlo private key: jYKDapJLaEiT-oKwuc284waGNjjBulq02yX5kvWjvPwQ
+//Dreamlo public key: 5551854e6e51b61a1cf90915
+
+using UnityEngine;
 using System.Collections;
 
 public class floorCollision : MonoBehaviour {
@@ -9,7 +12,7 @@ public class floorCollision : MonoBehaviour {
 	public Camera mcamera;				//Access the camera for hitting the sandbag
 	public Camera rcamera;				//Access the camera that follows the sandbag
 	public bool landed;					//Stores the variable that says if the sandbag has landed or not
-		
+
 	
 	// Use this for initialization
 	void Start () {
@@ -24,6 +27,11 @@ public class floorCollision : MonoBehaviour {
 		//Update the speed of the sandbag
 		robotSpeed = slap.robotSpeed;
 	}
+
+
+
+
+
 
 
 	//To let the player bask in their glory
@@ -130,9 +138,10 @@ public class floorCollision : MonoBehaviour {
 		//If a highscore was set, check the following
 		if (newHighscore){
 			//If its the overall highscore, go crazy
-			if (score > PlayerPrefs.GetInt ("highscorePos5")){
+			if (score > PlayerPrefs.GetInt ("highscorePos1")){
 				slap.restart = false;
 				slapText.wordScore = "OVERALL HIGHSCORE!!!!!!!: "+score;
+				slapText.wordScore += "\n Loading Highscore Entry";
 				slap.momCamera(landed);
 				StartCoroutine(numberOneLoader());
 			}
@@ -140,6 +149,7 @@ public class floorCollision : MonoBehaviour {
 			else{
 				slap.restart = false;
 				slapText.wordScore = "New Highscore!: "+score;
+				slapText.wordScore += "\n Loading Highscore Entry";
 				slap.smashBros(landed);
 				StartCoroutine(StartLoader());
 			}

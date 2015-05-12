@@ -128,12 +128,14 @@ public class FourBallsGameMaster : MonoBehaviour {
 						numberOne();
 						gameOver.text = "Overall Highscore!!!";
 						gameOver.text += "\n Balls: " + score;
+						gameOver.text += "\n Loading Highscore Entry";
 						StartCoroutine("overallScore");
 					}
 					else{
 						highScored();
 						gameOver.text = "New Highscore!";
 						gameOver.text += "\n Balls: " + score;
+						gameOver.text += "\n Loading Highscore Entry";
 						StartCoroutine("newScore");
 					}
 				}

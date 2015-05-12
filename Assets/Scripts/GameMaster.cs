@@ -9,6 +9,7 @@ public class GameMaster : MonoBehaviour {
 	public Transform arrow;
 	public float spawnTime = 2f;
 	public Spawner[] spawns;
+	float timeAlive;
 
 	public int score;
 	public int lives;
@@ -43,7 +44,9 @@ public class GameMaster : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-
+		if (lives > 0)
+			timeAlive = timeAlive + Time.deltaTime;
+		Debug.Log (timeAlive);
 
 		if (lives == 0)
 			Application.LoadLevel ("Menu");

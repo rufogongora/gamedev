@@ -217,7 +217,7 @@ public class SlapDetect : MonoBehaviour {
 		rb.velocity = Vector3.zero;
 		rb.angularVelocity = Vector3.zero;
 		transform.position = new Vector3 (414.25f, 153.93f, -35.25f);
-		transform.localEulerAngles = new Vector3(0,0,0);
+		transform.localEulerAngles = new Vector3(-90,-180,0);
 		soundPlayed = false;
 	}
 

@@ -5,6 +5,8 @@ using System.Collections;
 public class GameMaster : MonoBehaviour {
 
 	public Transform[] Targets;
+	public Text gameOver;
+	public cs1 hs;
 	public float time = 10f;
 	public Transform arrow;
 	public float spawnTime = 2f;
@@ -27,10 +29,39 @@ public class GameMaster : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		//This is amount of time it takes to spawn a monster again
-
+		//audio = GetComponent<AudioSource>();
 		InvokeRepeating ("changeSpawn", 0f, time);
 		InvokeRepeating ("IncreaseDifficulty", 10f, 10);
 
+	}
+
+	IEnumerator GameOver() {
+		yield return new WaitForSeconds(3);
+		//EXIT THE GAME HERE:
+		Application.LoadLevel ("Menu");
+	}
+	
+	IEnumerator newScore() {
+		yield return new WaitForSeconds(3);
+		//EXIT THE GAME HERE:
+		Application.LoadLevel ("CrushHighscore");
+	}
+	
+	IEnumerator overallScore() {
+		yield return new WaitForSeconds(3);
+		//EXIT THE GAME HERE:
+		gameOver.color = Color.cyan;
+		for (int i = 0; i<12; i++) {
+			if (i%2==0){
+				gameOver.color = Color.cyan;
+				yield return new WaitForSeconds(1);
+			}
+			else{
+				gameOver.color = Color.green;
+				yield return new WaitForSeconds(1);
+			}
+		}
+		Application.LoadLevel ("CrushHighscore");
 	}
 
 
@@ -42,14 +73,18 @@ public class GameMaster : MonoBehaviour {
 		}
 	}
 
+
+
 	// Update is called once per frame
 	void Update () {
 		if (lives > 0)
 			timeAlive = timeAlive + Time.deltaTime;
 		Debug.Log (timeAlive);
 
-		if (lives == 0)
-			Application.LoadLevel ("Menu");
+		if (lives == 0) {
+			PlayerPrefs.SetInt("highcrush", score);
+			Application.LoadLevel("CrushHighscore");
+		}
 
 		//take care of the spawn
 		if (Time.time - lastTime > spawnTime) {
@@ -60,12 +95,10 @@ public class GameMaster : MonoBehaviour {
 				UnityStandardAssets.Characters.ThirdPerson.AICharacterControl controller = enemy.GetComponent<UnityStandardAssets.Characters.ThirdPerson.AICharacterControl>();
 				if (controller != null)
 					controller.SetTarget(target);
-				
 			}
 			lastTime = Time.time;
 			
 		}
-
 
 		//UPDATE THE GUI
 		scoreBox.text = "Score: " + score;

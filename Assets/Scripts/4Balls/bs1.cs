@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class bs1 : MonoBehaviour {
 	public string highScore;
 	public Text hsText;
-	Highscore[] highscoresList;
+	public Highscore[] highscoresList;
 	
 	const string privateCode = "3sq5NJ4XDEGz6aSyjRKqVAQx4D2dFq4kioLxF3-y4JiA";
 	const string publicCode = "5551a3c46e51b61a1cf919aa";

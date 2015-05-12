@@ -5,6 +5,7 @@ using System.Collections;
 public class FourBallsGameMaster : MonoBehaviour {
 
 	public Transform [] balls;
+	public bs1 hs;
 	public Text scoreText;
 	public Text timeText;
 	public Text gameOver;
@@ -21,6 +22,8 @@ public class FourBallsGameMaster : MonoBehaviour {
 		InvokeRepeating ("generateBalls", 0f, 5f);
 		gOver = false;
 		audio = GetComponent<AudioSource>();
+
+
 	}
 
 	public void soundScore(){
@@ -122,8 +125,8 @@ public class FourBallsGameMaster : MonoBehaviour {
 			if (!gameOver.enabled)
 			{
 				gameOver.enabled = true;
-				if (score > PlayerPrefs.GetInt("highballPos5")){
-					if (score > PlayerPrefs.GetInt("highballPos1")){
+				if (score > hs.highscoresList[4].score){
+					if (score > hs.highscoresList[0].score ){
 						gameOver.color = Color.cyan;
 						numberOne();
 						gameOver.text = "Overall Highscore!!!";

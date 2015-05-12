@@ -5,7 +5,6 @@ using System.Collections;
 public class FourBallsGameMaster : MonoBehaviour {
 
 	public Transform [] balls;
-	public bs1 hs;
 	public Text scoreText;
 	public Text timeText;
 	public Text gameOver;
@@ -16,7 +15,6 @@ public class FourBallsGameMaster : MonoBehaviour {
 	int score;
 	public float time;
 	bool gOver;
-
 	// Use this for initialization
 	void Start () {
 		score = 0;
@@ -124,8 +122,8 @@ public class FourBallsGameMaster : MonoBehaviour {
 			if (!gameOver.enabled)
 			{
 				gameOver.enabled = true;
-				if (score > hs.highscoresList[4].score){
-					if (score > hs.highscoresList[0].score){
+				if (score > PlayerPrefs.GetInt("highballPos5")){
+					if (score > PlayerPrefs.GetInt("highballPos1")){
 						gameOver.color = Color.cyan;
 						numberOne();
 						gameOver.text = "Overall Highscore!!!";
@@ -143,7 +141,7 @@ public class FourBallsGameMaster : MonoBehaviour {
 				}
 				else{
 					gameOver.text += "\n Balls: " + score;
-					StartCoroutine("GameOver");
+					//StartCoroutine("GameOver");
 					gOver = true;
 				}
 			}

@@ -24,7 +24,7 @@ public class crushHS : MonoBehaviour {
 		
 	}
 	
-	const string privateCode = "3rToQVppG70SjSZRJMB19pgcasvDa8qcUy3-4w0nS6ZHA";
+	const string privateCode = "rToQVppG70SjSZRJMB19pgcasvDa8qcUy3-4w0nS6ZHA";
 	const string publicCode = "555233776e51b61a1cf9b4f0";
 	const string webURL = "http://dreamlo.com/lb/";
 	
@@ -88,7 +88,7 @@ public class crushHS : MonoBehaviour {
 		WWW www = new WWW(webURL + privateCode + "/add/" + WWW.EscapeURL(username) + "/" + score);
 		Debug.Log(www);
 		yield return www;
-		
+		yield return new WaitForSeconds(3);
 		if (string.IsNullOrEmpty(www.error))
 			print ("Upload Successful");
 		else {

@@ -79,7 +79,6 @@ public class GameMaster : MonoBehaviour {
 	void Update () {
 		if (lives > 0)
 			timeAlive = timeAlive + Time.deltaTime;
-		Debug.Log (timeAlive);
 
 		if (lives == 0) {
 			PlayerPrefs.SetInt("highcrush", score);

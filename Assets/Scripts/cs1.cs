@@ -10,7 +10,7 @@ public class cs1 : MonoBehaviour {
 	public Text hsText;
 	public Highscore[] highscoresList;
 
-	const string privateCode = "3rToQVppG70SjSZRJMB19pgcasvDa8qcUy3-4w0nS6ZHA";
+	const string privateCode = "rToQVppG70SjSZRJMB19pgcasvDa8qcUy3-4w0nS6ZHA";
 	const string publicCode = "555233776e51b61a1cf9b4f0";
 	const string webURL = "http://dreamlo.com/lb/";
 
@@ -51,10 +51,12 @@ public class cs1 : MonoBehaviour {
 	//Only the top 5 make it, rest is wasted space
 	void excess(){
 		for (int i = 5; i<highscoresList.Length; i++) {
-			DelHighscore(highscoresList[i].username);
+			DelHighscore (highscoresList [i].username);
 		}
 	}
-	
+
+
+
 	//Wait for the db to finish without halting the game
 	IEnumerator delExtras () 
 	{
@@ -74,7 +76,7 @@ public class cs1 : MonoBehaviour {
 		WWW www = new WWW(webURL + privateCode + "/add/" + WWW.EscapeURL(username) + "/" + score);
 		Debug.Log(www);
 		yield return www;
-		
+		yield return new WaitForSeconds(3);
 		if (string.IsNullOrEmpty(www.error))
 			print ("Upload Successful");
 		else {

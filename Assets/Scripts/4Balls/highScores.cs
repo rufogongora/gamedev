@@ -34,7 +34,7 @@ public class highScores : MonoBehaviour {
 		updated = false;							//Score hasn't been shifted yet
 		nameEntered = false;						//Name hasn't been entered yet
 		nameText = GetComponent<Text> ();			//Get access to text component
-		score = PlayerPrefs.GetInt ("highscore");	//Get the score from the last session
+		score = PlayerPrefs.GetInt ("highball");	//Get the score from the last session
 		
 		DownloadHighscores();
 		StartCoroutine(delExtras ());
@@ -46,7 +46,7 @@ public class highScores : MonoBehaviour {
 		//If the user entered their name they are ready to go back to playing, put their score in the table and send them back
 		if (nameEntered) {
 			AddNewHighscore(changeName, score);
-			Application.LoadLevel("Pimphand");
+			Application.LoadLevel("Menu");
 		}
 	}
 	

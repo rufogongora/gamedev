@@ -65,6 +65,12 @@ public class WhackedMole : MonoBehaviour {
 	
 	}
 
+	void UpScore(){
+		//if (moleGen.spawnPoint [position] == true) {
+			moleGen.gameScore += 1;
+		//}
+	}
+
 	void OnCollisionEnter(Collision collision){
 
 		//check to see if the hand hits the mole 
@@ -77,8 +83,7 @@ public class WhackedMole : MonoBehaviour {
 				//set the condition to false as you want it to move down
 				moleGen.spawnPoint[position] = false;
 
-				mG.UpGameScore();
-		
+				UpScore();	
 				PopMole();
 			}
 

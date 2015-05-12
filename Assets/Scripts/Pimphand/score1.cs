@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class score1 : MonoBehaviour {
 	public string highScore;
 	public Text hsText;
-	Highscore[] highscoresList;
+	public Highscore[] highscoresList;
 
 	const string privateCode = "jYKDapJLaEiT-oKwuc284waGNjjBulq02yX5kvWjvPwQ";
 	const string publicCode = "5551854e6e51b61a1cf90915";
@@ -115,6 +115,7 @@ public class score1 : MonoBehaviour {
 		for (int i = 0; i <entries.Length; i ++) {
 			string[] entryInfo = entries[i].Split(new char[] {'|'});
 			string username = entryInfo[0];
+			username = username.Replace("+", " ");
 			int score = int.Parse(entryInfo[1]);
 			this.highscoresList[i] = new Highscore(username,score);
 		}

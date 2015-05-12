@@ -6,6 +6,7 @@ using System.Collections;
 
 public class floorCollision : MonoBehaviour {
 	public SlapText slapText;			//Access the class object for the main text
+	public score1 hs;
 	public SlapDetect slap;				//Access the class object for the slap detection
 	public float robotSpeed;			//Stores the speed of the sandbag
 	public int score;					//Stores the distance the sandbag has flown
@@ -60,7 +61,7 @@ public class floorCollision : MonoBehaviour {
 
 	//Returns if they made the highscorelist or not
 	bool HighScore(){
-		if (score > PlayerPrefs.GetInt ("highscorePos5")) {
+		if (score > hs.highscoresList[4].score) {
 			PlayerPrefs.SetInt("highscore", (int)slap.deltaDistance.x*(-1));
 			return true;
 		}
@@ -138,7 +139,7 @@ public class floorCollision : MonoBehaviour {
 		//If a highscore was set, check the following
 		if (newHighscore){
 			//If its the overall highscore, go crazy
-			if (score > PlayerPrefs.GetInt ("highscorePos1")){
+			if (score > hs.highscoresList[0].score){
 				slap.restart = false;
 				slapText.wordScore = "OVERALL HIGHSCORE!!!!!!!: "+score;
 				slapText.wordScore += "\n Loading Highscore Entry";
